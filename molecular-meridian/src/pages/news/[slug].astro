@@ -1,0 +1,48 @@
+---
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("news");
+  return posts.map((p) => ({ params: { slug: p.slug }, props: { post: p } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{post.data.title} | RAPDM</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <style>
+      body{ margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial; background:#0b0f16; color:rgba(255,255,255,.92); }
+      .container{ width:min(980px, calc(100% - 28px)); margin: 26px auto 60px; }
+      a{ color:inherit; text-decoration:none; }
+      .btn{ display:inline-flex; border-radius:999px; padding:10px 12px; border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.06); }
+      .meta{ color:rgba(255,255,255,.54); font-size:12px; margin: 10px 0 18px; }
+      .prose{ border:1px solid rgba(255,255,255,.10); background:rgba(255,255,255,.05); border-radius:16px; padding: 18px; }
+      .prose :global(h1), .prose :global(h2), .prose :global(h3){ letter-spacing:-0.02em; }
+      .prose :global(p){ color:rgba(255,255,255,.80); line-height:1.72; }
+      .top{ display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom: 16px; }
+      h1{ margin:0; font-size:24px; letter-spacing:-0.02em; }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="top">
+        <a class="btn" href="/news">Back</a>
+        <a class="btn" href="/">Home</a>
+      </div>
+
+      <h1>{post.data.title}</h1>
+      <div class="meta">{post.data.lang.toUpperCase()} · {post.data.date.toISOString().slice(0,10)}</div>
+
+      <div class="prose">
+        <Content />
+      </div>
+    </div>
+  </body>
+</html>
