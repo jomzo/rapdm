@@ -1,196 +1,28 @@
 ---
-/**
- * RAPDM Single Page
- * PT default, EN toggle
- * Clean tech / YC vibe, light theme
- * Includes: animated gradient mesh, subtle grid, cursor glow, reveal-on-scroll, icons (inline SVG)
- */
-
-const copy = {
-  pt: {
-    nav: {
-      work: "O que fazemos",
-      platform: "Plataforma",
-      thesis: "Tese",
-      ventures: "Ventures",
-      contact: "Contacto",
-    },
-    hero: {
-      kicker: "RAPDM",
-      titleA: "Holding com ambição",
-      titleB: "de construir e investir.",
-      sub: "Uma casa para marcas e produtos que escalam. Venture studio quando faz sentido. Capital e execução quando há convicção.",
-      cta1: "Falar connosco",
-      cta2: "Ver tese",
-      badges: ["Holding", "Venture Studio", "Investimentos", "Operações"],
-    },
-    blocks: {
-      what: {
-        title: "O que fazemos",
-        cards: [
-          {
-            title: "Holding",
-            desc: "Agregamos ativos, criamos estrutura, e protegemos opcionalidade. Construção de longo prazo com disciplina.",
-            icon: "hex",
-          },
-          {
-            title: "Venture studio",
-            desc: "Desenhamos, validamos e executamos produtos. Branding, crescimento e sistemas. Muito foco, pouca conversa.",
-            icon: "spark",
-          },
-          {
-            title: "Investimentos",
-            desc: "Entramos em negócios com sinais claros: fundadores fortes, unit economics, e alavancas reais de crescimento.",
-            icon: "arrow",
-          },
-        ],
-      },
-      platform: {
-        title: "Como pensamos",
-        points: [
-          { title: "Velocidade com rigor", desc: "Movimento rápido, mas com métricas e controlo. A estética é consequência de clareza." },
-          { title: "Sistemas > esforço", desc: "Automação, dados e cadência operacional. O objetivo é consistência, não heroísmo." },
-          { title: "Marca como ativo", desc: "Atenção ao detalhe. Narrativa, produto e distribuição alinhados." },
-          { title: "Capital bem colocado", desc: "Preferimos poucas apostas, bem entendidas, com convexidade." },
-        ],
-      },
-      thesis: {
-        title: "Tese",
-        lead: "Operamos na intersecção de consumo e software. Gostamos de mercados simples com execução difícil.",
-        tags: [
-          "Marcas D2C com distribuição defensável",
-          "Infra e analytics para e-commerce",
-          "SaaS com dados proprietários",
-          "Automação operacional e tooling interno",
-        ],
-      },
-      ventures: {
-        title: "Portfólio e incubação",
-        lead: "Alguns projetos e marcas vivem aqui. Outros entram quando o timing e a energia estão certos.",
-        items: [
-          { name: "AUDAX", desc: "Marca e-commerce" },
-          { name: "ScalerPath", desc: "SaaS / analytics" },
-          { name: "Chift", desc: "Produto tech" },
-        ],
-        note: "Se tens uma empresa com tração e queres um parceiro operator-first, fala connosco.",
-      },
-      contact: {
-        title: "Contacto",
-        lead: "Sem rodeios. Diz o que tens, o que precisas, e qual o objetivo.",
-        emailLabel: "Email",
-        cta: "Enviar email",
-        footer: "RAPDM. Operar bem é uma forma de respeito.",
-      },
-    },
-    meta: {
-      title: "RAPDM | Holding Company + Venture Studio",
-    },
-  },
-  en: {
-    nav: {
-      work: "What we do",
-      platform: "Platform",
-      thesis: "Thesis",
-      ventures: "Ventures",
-      contact: "Contact",
-    },
-    hero: {
-      kicker: "RAPDM",
-      titleA: "A holding built",
-      titleB: "to build and invest.",
-      sub: "A home for brands and products that scale. A venture studio when it makes sense. Capital and execution when conviction is real.",
-      cta1: "Talk to us",
-      cta2: "Read thesis",
-      badges: ["Holding", "Venture Studio", "Investments", "Operations"],
-    },
-    blocks: {
-      what: {
-        title: "What we do",
-        cards: [
-          {
-            title: "Holding",
-            desc: "We consolidate assets, build structure, and protect optionality. Long-term building with discipline.",
-            icon: "hex",
-          },
-          {
-            title: "Venture studio",
-            desc: "We design, validate, and ship. Brand, growth, and systems. High focus, low noise.",
-            icon: "spark",
-          },
-          {
-            title: "Investments",
-            desc: "We back companies with clear signals: strong founders, solid unit economics, and real growth levers.",
-            icon: "arrow",
-          },
-        ],
-      },
-      platform: {
-        title: "How we think",
-        points: [
-          { title: "Speed with rigor", desc: "Move fast with metrics and control. Aesthetic follows clarity." },
-          { title: "Systems > effort", desc: "Automation, data, and operational cadence. Consistency beats heroics." },
-          { title: "Brand as an asset", desc: "Details matter. Narrative, product, and distribution aligned." },
-          { title: "Capital, well placed", desc: "Fewer bets, deeply understood, with convex upside." },
-        ],
-      },
-      thesis: {
-        title: "Thesis",
-        lead: "We operate at the intersection of consumer and software. Simple markets, hard execution.",
-        tags: [
-          "D2C brands with defensible distribution",
-          "E-commerce infra and analytics",
-          "SaaS with proprietary data",
-          "Operational automation and internal tooling",
-        ],
-      },
-      ventures: {
-        title: "Portfolio and incubation",
-        lead: "Some brands and products live here. Others join when timing and energy align.",
-        items: [
-          { name: "AUDAX", desc: "E-commerce brand" },
-          { name: "ScalerPath", desc: "SaaS / analytics" },
-          { name: "Chift", desc: "Tech product" },
-        ],
-        note: "If you have traction and want an operator-first partner, reach out.",
-      },
-      contact: {
-        title: "Contact",
-        lead: "No fluff. Tell us what you have, what you need, and the target outcome.",
-        emailLabel: "Email",
-        cta: "Send email",
-        footer: "RAPDM. Operating well is a form of respect.",
-      },
-    },
-    meta: {
-      title: "RAPDM | Holding Company + Venture Studio",
-    },
-  },
-};
-
-const email = "mail@rapdm.co";
+const SITE_TITLE = "RAPDM | Holding Company + Venture Studio";
+const EMAIL = "mail@rapdm.co";
 ---
 
 <!doctype html>
-<html lang="pt">
+<html lang="pt-PT">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="RAPDM: holding, venture studio, and investments." />
+    <meta name="description" content="RAPDM: holding, venture studio, e investimentos." />
     <meta name="theme-color" content="#0B5CFF" />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preload" as="image" href="/rapdm-logo.png" />
 
-    <title>{copy.pt.meta.title}</title>
+    <title>{SITE_TITLE}</title>
 
     <style>
       :root{
         --bg: #f6f8ff;
-        --card: rgba(255,255,255,.72);
-        --card2: rgba(255,255,255,.86);
         --text: #0b1220;
         --muted: rgba(11,18,32,.62);
         --line: rgba(11,18,32,.10);
+        --card: rgba(255,255,255,.72);
         --shadow: 0 10px 30px rgba(15,23,42,.10);
         --shadow2: 0 18px 60px rgba(15,23,42,.14);
         --blue: #0B5CFF;
@@ -201,7 +33,7 @@ const email = "mail@rapdm.co";
         --max: 1120px;
       }
 
-      *{ box-sizing: border-box; }
+      *{ box-sizing:border-box; }
       html,body{ height:100%; }
       body{
         margin:0;
@@ -211,7 +43,7 @@ const email = "mail@rapdm.co";
         overflow-x:hidden;
       }
 
-      /* Background: animated mesh + grid */
+      /* Background: live movement */
       .bg{
         position: fixed;
         inset: 0;
@@ -227,15 +59,16 @@ const email = "mail@rapdm.co";
           radial-gradient(900px 700px at 70% 78%, rgba(87,164,255,.14), transparent 60%),
           radial-gradient(800px 650px at 22% 85%, rgba(11,92,255,.10), transparent 60%),
           radial-gradient(900px 900px at 50% 50%, rgba(255,255,255,.6), transparent 62%);
-        filter: blur(10px);
+        filter: blur(12px);
         transform: translate3d(0,0,0);
         animation: drift 14s ease-in-out infinite;
       }
       @keyframes drift{
-        0% { transform: translate3d(0,0,0) scale(1); }
-        50% { transform: translate3d(2.5%, -1.5%, 0) scale(1.03); }
-        100% { transform: translate3d(0,0,0) scale(1); }
+        0%{ transform: translate3d(0,0,0) scale(1); }
+        50%{ transform: translate3d(2.5%, -1.5%, 0) scale(1.03); }
+        100%{ transform: translate3d(0,0,0) scale(1); }
       }
+
       .grid{
         position:absolute;
         inset:0;
@@ -246,6 +79,7 @@ const email = "mail@rapdm.co";
         opacity:.45;
         mask-image: radial-gradient(60% 55% at 50% 25%, rgba(0,0,0,1), transparent 70%);
       }
+
       .topGlow{
         position:absolute;
         top:-240px;
@@ -257,15 +91,15 @@ const email = "mail@rapdm.co";
           radial-gradient(closest-side, rgba(11,92,255,.22), transparent 70%),
           radial-gradient(closest-side, rgba(122,92,255,.16), transparent 72%);
         filter: blur(22px);
-        opacity:.9;
+        opacity:.92;
         animation: pulse 7s ease-in-out infinite;
       }
       @keyframes pulse{
-        0%,100%{ transform: translateX(-50%) scale(1); opacity:.85; }
+        0%,100%{ transform: translateX(-50%) scale(1); opacity:.86; }
         50%{ transform: translateX(-50%) scale(1.06); opacity:1; }
       }
 
-      /* Cursor glow */
+      /* Cursor (desktop only) */
       .cursorGlow{
         position: fixed;
         width: 520px;
@@ -276,62 +110,72 @@ const email = "mail@rapdm.co";
         background: radial-gradient(circle at center, rgba(11,92,255,.16), rgba(122,92,255,.10), transparent 60%);
         filter: blur(18px);
         transform: translate(-50%,-50%);
-        opacity:.0;
-        transition: opacity .2s ease;
+        opacity:0;
+        transition: opacity .18s ease;
       }
-      @media (hover: none){
-        .cursorGlow{ display:none; }
+      .cursorDot{
+        position: fixed;
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        pointer-events:none;
+        z-index: 4;
+        background: rgba(11,92,255,.95);
+        box-shadow: 0 12px 28px rgba(11,92,255,.28);
+        transform: translate(-50%,-50%);
+        opacity:0;
+        transition: opacity .18s ease, transform .18s ease;
+      }
+      .cursorDot.active{
+        transform: translate(-50%,-50%) scale(1.6);
+        background: rgba(122,92,255,.95);
+      }
+      @media (hover:none){
+        .cursorGlow,.cursorDot{ display:none; }
       }
 
       /* Layout */
-      .wrap{
-        position: relative;
-        z-index: 1;
-        min-height:100%;
-      }
-      .container{
-        width: min(var(--max), calc(100% - 48px));
-        margin: 0 auto;
-      }
+      .wrap{ position:relative; z-index:1; min-height:100%; }
+      .container{ width: min(var(--max), calc(100% - 48px)); margin: 0 auto; }
 
       header{
         position: sticky;
         top: 0;
         z-index: 10;
         backdrop-filter: blur(14px);
-        background: rgba(246,248,255,.72);
+        background: rgba(246,248,255,.74);
         border-bottom: 1px solid rgba(11,18,32,.06);
       }
       .nav{
         display:flex;
         align-items:center;
         justify-content:space-between;
-        height: 72px;
-        gap: 14px;
+        height:72px;
+        gap:14px;
       }
       .brand{
         display:flex;
         align-items:center;
-        gap: 12px;
+        gap:12px;
         text-decoration:none;
-        color: inherit;
+        color:inherit;
       }
       .brand img{
         height: 26px;
-        width: auto;
+        width:auto;
         display:block;
         filter: drop-shadow(0 10px 20px rgba(15,23,42,.10));
       }
       .brand span{
-        font-weight: 700;
-        letter-spacing: .12em;
-        font-size: 12px;
-        opacity: .88;
+        font-weight:700;
+        letter-spacing:.12em;
+        font-size:12px;
+        opacity:.88;
       }
 
       .navLinks{
         display:flex;
-        gap: 18px;
+        gap:18px;
         align-items:center;
       }
       .navLinks a{
@@ -348,11 +192,7 @@ const email = "mail@rapdm.co";
         transform: translateY(-1px);
       }
 
-      .right{
-        display:flex;
-        align-items:center;
-        gap: 10px;
-      }
+      .right{ display:flex; align-items:center; gap:10px; }
       .lang{
         display:flex;
         align-items:center;
@@ -370,45 +210,43 @@ const email = "mail@rapdm.co";
         color: rgba(11,18,32,.70);
         transition: background .2s ease, color .2s ease;
       }
-      .lang button.active{
+      .lang button[aria-pressed="true"]{
         background: rgba(11,92,255,.10);
         color: rgba(11,92,255,1);
-        font-weight: 700;
+        font-weight:700;
       }
 
       main{ padding: 46px 0 92px; }
-
-      .hero{
-        padding: 44px 0 10px;
+      @media (max-width: 920px){
+        .navLinks{ display:none; }
+        main{ padding-top: 26px; }
       }
+
+      .hero{ padding: 44px 0 10px; }
       .kicker{
         display:inline-flex;
         align-items:center;
-        gap: 10px;
+        gap:10px;
         padding: 8px 12px;
         border: 1px solid rgba(11,18,32,.10);
         background: rgba(255,255,255,.62);
         border-radius: 999px;
-        font-size: 12px;
+        font-size:12px;
         color: rgba(11,18,32,.74);
         box-shadow: var(--shadow);
       }
       .dot{
-        width: 8px; height: 8px; border-radius: 99px;
+        width: 8px; height: 8px; border-radius:999px;
         background: linear-gradient(180deg, var(--blue), var(--violet));
         box-shadow: 0 10px 24px rgba(11,92,255,.22);
       }
-
       h1{
         margin: 18px 0 10px;
         font-size: clamp(34px, 5.4vw, 62px);
         line-height: 1.02;
         letter-spacing: -0.03em;
       }
-      h1 .soft{
-        color: rgba(11,18,32,.70);
-        font-weight: 600;
-      }
+      h1 .soft{ color: rgba(11,18,32,.70); font-weight:600; }
       .sub{
         max-width: 820px;
         font-size: 16px;
@@ -427,7 +265,7 @@ const email = "mail@rapdm.co";
       .btn{
         display:inline-flex;
         align-items:center;
-        gap: 10px;
+        gap:10px;
         border-radius: 999px;
         padding: 12px 16px;
         font-size: 13px;
@@ -443,18 +281,16 @@ const email = "mail@rapdm.co";
       .btn.primary{
         background: linear-gradient(180deg, rgba(11,92,255,.98), rgba(11,92,255,.82));
         border-color: rgba(11,92,255,.40);
-        color: white;
+        color: #fff;
       }
       .btn.primary:hover{
         background: linear-gradient(180deg, rgba(11,92,255,1), rgba(122,92,255,.92));
       }
-      .btn .ic{
-        width: 16px; height: 16px; display:inline-block;
-      }
+      .btn .ic{ width:16px; height:16px; display:inline-block; }
 
       .badges{
         display:flex;
-        gap: 10px;
+        gap:10px;
         flex-wrap:wrap;
         margin-top: 18px;
       }
@@ -467,15 +303,13 @@ const email = "mail@rapdm.co";
         color: rgba(11,18,32,.72);
       }
 
-      section{
-        padding: 34px 0;
-      }
+      section{ padding: 34px 0; }
 
       .sectionTitle{
         display:flex;
         align-items:baseline;
         justify-content:space-between;
-        gap: 14px;
+        gap:14px;
         margin-bottom: 14px;
       }
       .sectionTitle h2{
@@ -500,10 +334,8 @@ const email = "mail@rapdm.co";
         gap: 14px;
       }
       @media (max-width: 920px){
-        .navLinks{ display:none; }
         .grid3{ grid-template-columns: 1fr; }
         .grid2{ grid-template-columns: 1fr; }
-        main{ padding-top: 26px; }
       }
 
       .card{
@@ -526,15 +358,15 @@ const email = "mail@rapdm.co";
         position:absolute;
         inset:-2px;
         background: radial-gradient(600px 180px at 30% 0%, rgba(11,92,255,.14), transparent 60%);
-        opacity:.0;
+        opacity:0;
         transition: opacity .25s ease;
         pointer-events:none;
       }
-      .card:hover::before{ opacity: 1; }
+      .card:hover::before{ opacity:1; }
 
       .cardTop{
         display:flex;
-        align-items:center;
+        align-items:flex-start;
         gap: 12px;
         margin-bottom: 10px;
       }
@@ -546,6 +378,7 @@ const email = "mail@rapdm.co";
         border: 1px solid rgba(11,92,255,.18);
         display:grid;
         place-items:center;
+        flex: 0 0 auto;
       }
       .iconPill svg{ width: 18px; height: 18px; }
       .card h3{
@@ -558,21 +391,6 @@ const email = "mail@rapdm.co";
         color: var(--muted);
         font-size: 13px;
         line-height: 1.55;
-      }
-
-      .tags{
-        display:flex;
-        flex-wrap:wrap;
-        gap: 10px;
-        margin-top: 12px;
-      }
-      .tag{
-        font-size: 12px;
-        padding: 8px 10px;
-        border-radius: 999px;
-        border: 1px solid rgba(11,18,32,.10);
-        background: rgba(255,255,255,.70);
-        color: rgba(11,18,32,.70);
       }
 
       .list{
@@ -602,6 +420,21 @@ const email = "mail@rapdm.co";
       }
       .bullet svg{ width: 14px; height: 14px; }
 
+      .tags{
+        display:flex;
+        flex-wrap:wrap;
+        gap: 10px;
+        margin-top: 12px;
+      }
+      .tag{
+        font-size: 12px;
+        padding: 8px 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(11,18,32,.10);
+        background: rgba(255,255,255,.70);
+        color: rgba(11,18,32,.70);
+      }
+
       .contactCard{
         display:flex;
         align-items:flex-start;
@@ -630,20 +463,19 @@ const email = "mail@rapdm.co";
         font-size: 12px;
       }
 
-      /* Reveal animation */
+      /* Reveal */
       [data-reveal]{
         opacity: 0;
         transform: translateY(10px);
         transition: opacity .65s ease, transform .65s ease;
         will-change: opacity, transform;
       }
-      [data-reveal].in{
+      .revealed{
         opacity: 1;
         transform: translateY(0);
       }
 
-      /* Interactive hover cursor for clickable */
-      a, button{ -webkit-tap-highlight-color: transparent; }
+      /* Hover aura for interactive */
       .hoverable{ position: relative; }
       .hoverable::after{
         content:"";
@@ -657,35 +489,8 @@ const email = "mail@rapdm.co";
       }
       .hoverable:hover::after{ opacity: 1; }
 
-      /* Small floating glyphs left */
-      .rail{
-        position: fixed;
-        left: 18px;
-        top: 160px;
-        display:flex;
-        flex-direction:column;
-        gap: 16px;
-        z-index: 2;
-        opacity:.55;
-      }
-      .rail a{
-        width: 34px;
-        height: 34px;
-        display:grid;
-        place-items:center;
-        border-radius: 14px;
-        border: 1px solid rgba(11,18,32,.10);
-        background: rgba(255,255,255,.58);
-        text-decoration:none;
-        color: rgba(11,18,32,.72);
-        box-shadow: var(--shadow);
-        transition: transform .2s ease, opacity .2s ease;
-      }
-      .rail a:hover{ transform: translateY(-2px); opacity: 1; }
-      .rail svg{ width: 16px; height: 16px; }
-      @media (max-width: 920px){
-        .rail{ display:none; }
-      }
+      /* Language blocks */
+      [data-i18n="en"]{ display:none; }
     </style>
   </head>
 
@@ -695,45 +500,31 @@ const email = "mail@rapdm.co";
       <div class="grid"></div>
       <div class="topGlow"></div>
     </div>
-    <div class="cursorGlow" id="cursorGlow" aria-hidden="true"></div>
 
-    <!-- Left rail -->
-    <nav class="rail" aria-label="Quick">
-      <a href="#work" title="Work">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M12 2v20M2 12h20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-      </a>
-      <a href="#thesis" title="Thesis">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l2.4 6.2L21 12l-6.6 2.8L12 21l-2.4-6.2L3 12l6.6-2.8L12 3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-      </a>
-      <a href="#ventures" title="Ventures">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M7 3h10v18H7V3z" stroke="currentColor" stroke-width="1.6"/><path d="M9 7h6M9 11h6M9 15h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-      </a>
-      <a href="#contact" title="Contact">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-    </nav>
+    <div class="cursorGlow" id="cursorGlow" aria-hidden="true"></div>
+    <div class="cursorDot" id="cursorDot" aria-hidden="true"></div>
 
     <div class="wrap">
       <header>
         <div class="container">
           <div class="nav">
-            <a class="brand hoverable" href="#top">
+            <a class="brand hoverable" href="#top" data-hover>
               <img src="/rapdm-logo.png" alt="RAPDM" />
-              <span id="brandText">RAPDM</span>
+              <span>RAPDM</span>
             </a>
 
-            <div class="navLinks" id="navLinks">
-              <a class="hoverable" href="#work" data-i18n="nav.work">{copy.pt.nav.work}</a>
-              <a class="hoverable" href="#platform" data-i18n="nav.platform">{copy.pt.nav.platform}</a>
-              <a class="hoverable" href="#thesis" data-i18n="nav.thesis">{copy.pt.nav.thesis}</a>
-              <a class="hoverable" href="#ventures" data-i18n="nav.ventures">{copy.pt.nav.ventures}</a>
-              <a class="hoverable" href="#contact" data-i18n="nav.contact">{copy.pt.nav.contact}</a>
+            <div class="navLinks">
+              <a class="hoverable" href="#work" data-hover>O que fazemos</a>
+              <a class="hoverable" href="#platform" data-hover>Plataforma</a>
+              <a class="hoverable" href="#thesis" data-hover>Tese</a>
+              <a class="hoverable" href="#ventures" data-hover>Ventures</a>
+              <a class="hoverable" href="#contact" data-hover>Contacto</a>
             </div>
 
             <div class="right">
               <div class="lang" role="tablist" aria-label="Language">
-                <button id="btnPT" class="active" type="button" aria-label="Português">PT</button>
-                <button id="btnEN" type="button" aria-label="English">EN</button>
+                <button type="button" data-lang="pt" aria-pressed="true">PT</button>
+                <button type="button" data-lang="en" aria-pressed="false">EN</button>
               </div>
             </div>
           </div>
@@ -742,298 +533,582 @@ const email = "mail@rapdm.co";
 
       <main id="top">
         <div class="container">
-          <!-- HERO -->
-          <section class="hero">
+
+          <!-- HERO PT -->
+          <section class="hero" data-i18n="pt">
             <div class="kicker" data-reveal>
               <span class="dot"></span>
-              <span data-i18n="hero.kicker">{copy.pt.hero.kicker}</span>
+              <span>RAPDM</span>
             </div>
 
             <h1 data-reveal>
-              <span data-i18n="hero.titleA">{copy.pt.hero.titleA}</span><br />
-              <span class="soft" data-i18n="hero.titleB">{copy.pt.hero.titleB}</span>
+              <span>Holding com ambição</span><br />
+              <span class="soft">de construir e investir.</span>
             </h1>
 
-            <p class="sub" data-reveal data-i18n="hero.sub">{copy.pt.hero.sub}</p>
+            <p class="sub" data-reveal>
+              Uma casa para marcas e produtos que escalam. Venture studio quando faz sentido.
+              Capital e execução quando há convicção.
+            </p>
 
             <div class="ctaRow" data-reveal>
-              <a class="btn primary hoverable" href={"mailto:" + email}>
+              <a class="btn primary hoverable" href={`mailto:${EMAIL}`} data-hover>
                 <span class="ic" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4V6z" stroke="currentColor" stroke-width="1.6"/><path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </span>
-                <span data-i18n="hero.cta1">{copy.pt.hero.cta1}</span>
+                <span>Falar connosco</span>
               </a>
 
-              <a class="btn hoverable" href="#thesis">
+              <a class="btn hoverable" href="#thesis" data-hover>
                 <span class="ic" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none"><path d="M6 12h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M13 7l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </span>
-                <span data-i18n="hero.cta2">{copy.pt.hero.cta2}</span>
+                <span>Ver tese</span>
               </a>
             </div>
 
             <div class="badges" data-reveal>
-              {copy.pt.hero.badges.map((b) => <span class="badge" data-i18n-array="hero.badges">{b}</span>)}
+              <span class="badge">Holding</span>
+              <span class="badge">Venture Studio</span>
+              <span class="badge">Investimentos</span>
+              <span class="badge">Operações</span>
             </div>
           </section>
 
-          <!-- WHAT -->
-          <section id="work">
+          <!-- HERO EN -->
+          <section class="hero" data-i18n="en">
+            <div class="kicker" data-reveal>
+              <span class="dot"></span>
+              <span>RAPDM</span>
+            </div>
+
+            <h1 data-reveal>
+              <span>A holding built</span><br />
+              <span class="soft">to build and invest.</span>
+            </h1>
+
+            <p class="sub" data-reveal>
+              A home for brands and products that scale. A venture studio when it makes sense.
+              Capital and execution when conviction is real.
+            </p>
+
+            <div class="ctaRow" data-reveal>
+              <a class="btn primary hoverable" href={`mailto:${EMAIL}`} data-hover>
+                <span class="ic" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4V6z" stroke="currentColor" stroke-width="1.6"/><path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                <span>Talk to us</span>
+              </a>
+
+              <a class="btn hoverable" href="#thesis" data-hover>
+                <span class="ic" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M6 12h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M13 7l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                <span>Read thesis</span>
+              </a>
+            </div>
+
+            <div class="badges" data-reveal>
+              <span class="badge">Holding</span>
+              <span class="badge">Venture Studio</span>
+              <span class="badge">Investments</span>
+              <span class="badge">Operations</span>
+            </div>
+          </section>
+
+          <!-- WHAT PT -->
+          <section id="work" data-i18n="pt">
             <div class="sectionTitle" data-reveal>
-              <h2 data-i18n="blocks.what.title">{copy.pt.blocks.what.title}</h2>
+              <h2>O que fazemos</h2>
               <p>RAPDM</p>
             </div>
 
             <div class="grid3">
-              {copy.pt.blocks.what.cards.map((c) => (
-                <article class="card" data-reveal>
-                  <div class="cardTop">
-                    <div class="iconPill" aria-hidden="true">
-                      {c.icon === "hex" ? (
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <path d="M7.5 4.8 12 2.2l4.5 2.6L21 9.4v5.2l-4.5 2.6L12 19.8l-4.5-2.6L3 14.6V9.4l4.5-4.6z"
-                            stroke="currentColor" stroke-width="1.4" />
-                        </svg>
-                      ) : c.icon === "spark" ? (
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <path d="M12 2l2.4 6.2L21 12l-6.6 2.8L12 21l-2.4-6.2L3 12l6.6-2.8L12 2z"
-                            stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
-                        </svg>
-                      ) : (
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <path d="M5 12h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                          <path d="M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                      )}
-                    </div>
-
-                    <div>
-                      <h3 data-i18n="card.title">{c.title}</h3>
-                      <p data-i18n="card.desc">{c.desc}</p>
-                    </div>
+              <article class="card" data-reveal data-hover>
+                <div class="cardTop">
+                  <div class="iconPill" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M7.5 4.8 12 2.2l4.5 2.6L21 9.4v5.2l-4.5 2.6L12 19.8l-4.5-2.6L3 14.6V9.4l4.5-4.6z" stroke="currentColor" stroke-width="1.4"/>
+                    </svg>
                   </div>
-                </article>
-              ))}
+                  <div>
+                    <h3>Holding</h3>
+                    <p>Agregamos ativos, criamos estrutura e protegemos opcionalidade. Construção de longo prazo com disciplina.</p>
+                  </div>
+                </div>
+              </article>
+
+              <article class="card" data-reveal data-hover>
+                <div class="cardTop">
+                  <div class="iconPill" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M12 2l2.4 6.2L21 12l-6.6 2.8L12 21l-2.4-6.2L3 12l6.6-2.8L12 2z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3>Venture studio</h3>
+                    <p>Desenhamos, validamos e executamos produtos. Branding, crescimento e sistemas. Muito foco, pouca conversa.</p>
+                  </div>
+                </div>
+              </article>
+
+              <article class="card" data-reveal data-hover>
+                <div class="cardTop">
+                  <div class="iconPill" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M5 12h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                      <path d="M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3>Investimentos</h3>
+                    <p>Entramos em negócios com sinais claros: fundadores fortes, unit economics e alavancas reais de crescimento.</p>
+                  </div>
+                </div>
+              </article>
             </div>
           </section>
 
-          <!-- PLATFORM -->
-          <section id="platform">
+          <!-- WHAT EN -->
+          <section id="work-en" data-i18n="en">
             <div class="sectionTitle" data-reveal>
-              <h2 data-i18n="blocks.platform.title">{copy.pt.blocks.platform.title}</h2>
+              <h2>What we do</h2>
+              <p>RAPDM</p>
+            </div>
+
+            <div class="grid3">
+              <article class="card" data-reveal data-hover>
+                <div class="cardTop">
+                  <div class="iconPill" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M7.5 4.8 12 2.2l4.5 2.6L21 9.4v5.2l-4.5 2.6L12 19.8l-4.5-2.6L3 14.6V9.4l4.5-4.6z" stroke="currentColor" stroke-width="1.4"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3>Holding</h3>
+                    <p>We consolidate assets, build structure and protect optionality. Long-term building with discipline.</p>
+                  </div>
+                </div>
+              </article>
+
+              <article class="card" data-reveal data-hover>
+                <div class="cardTop">
+                  <div class="iconPill" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M12 2l2.4 6.2L21 12l-6.6 2.8L12 21l-2.4-6.2L3 12l6.6-2.8L12 2z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3>Venture studio</h3>
+                    <p>We design, validate and ship. Brand, growth and systems. High focus, low noise.</p>
+                  </div>
+                </div>
+              </article>
+
+              <article class="card" data-reveal data-hover>
+                <div class="cardTop">
+                  <div class="iconPill" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M5 12h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                      <path d="M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3>Investments</h3>
+                    <p>We back companies with clear signals: strong founders, unit economics and real growth levers.</p>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <!-- PLATFORM PT -->
+          <section id="platform" data-i18n="pt">
+            <div class="sectionTitle" data-reveal>
+              <h2>Como pensamos</h2>
               <p>Operator-first</p>
             </div>
 
             <div class="list">
-              {copy.pt.blocks.platform.points.map((p) => (
-                <div class="listItem" data-reveal>
-                  <div class="bullet" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none">
-                      <path d="M20 7L10 17l-5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 style="margin:0 0 6px; font-size:14px; letter-spacing:-0.01em;" data-i18n="point.title">{p.title}</h3>
-                    <p style="margin:0; color:var(--muted); font-size:13px; line-height:1.55;" data-i18n="point.desc">{p.desc}</p>
-                  </div>
+              <div class="listItem" data-reveal data-hover>
+                <div class="bullet" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M20 7L10 17l-5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </div>
-              ))}
-            </div>
-          </section>
+                <div>
+                  <h3 style="margin:0 0 6px; font-size:14px;">Velocidade com rigor</h3>
+                  <p style="margin:0; color:var(--muted); font-size:13px; line-height:1.55;">Movimento rápido, mas com métricas e controlo. A estética é consequência de clareza.</p>
+                </div>
+              </div>
 
-          <!-- THESIS -->
-          <section id="thesis">
-            <div class="sectionTitle" data-reveal>
-              <h2 data-i18n="blocks.thesis.title">{copy.pt.blocks.thesis.title}</h2>
-              <p>Focus</p>
-            </div>
+              <div class="listItem" data-reveal data-hover>
+                <div class="bullet" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M20 7L10 17l-5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div>
+                  <h3 style="margin:0 0 6px; font-size:14px;">Sistemas &gt; esforço</h3>
+                  <p style="margin:0; color:var(--muted); font-size:13px; line-height:1.55;">Automação, dados e cadência operacional. O objetivo é consistência, não heroísmo.</p>
+                </div>
+              </div>
 
-            <div class="card" data-reveal>
-              <p style="margin:0; color:var(--muted); font-size:14px; line-height:1.6;" data-i18n="blocks.thesis.lead">
-                {copy.pt.blocks.thesis.lead}
-              </p>
-              <div class="tags">
-                {copy.pt.blocks.thesis.tags.map((t) => (
-                  <span class="tag" data-i18n-array="blocks.thesis.tags">{t}</span>
-                ))}
+              <div class="listItem" data-reveal data-hover>
+                <div class="bullet" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M20 7L10 17l-5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div>
+                  <h3 style="margin:0 0 6px; font-size:14px;">Marca como ativo</h3>
+                  <p style="margin:0; color:var(--muted); font-size:13px; line-height:1.55;">Atenção ao detalhe. Narrativa, produto e distribuição alinhados.</p>
+                </div>
+              </div>
+
+              <div class="listItem" data-reveal data-hover>
+                <div class="bullet" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M20 7L10 17l-5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div>
+                  <h3 style="margin:0 0 6px; font-size:14px;">Capital bem colocado</h3>
+                  <p style="margin:0; color:var(--muted); font-size:13px; line-height:1.55;">Preferimos poucas apostas, bem entendidas, com convexidade.</p>
+                </div>
               </div>
             </div>
           </section>
 
-          <!-- VENTURES -->
-          <section id="ventures">
+          <!-- PLATFORM EN -->
+          <section id="platform-en" data-i18n="en">
             <div class="sectionTitle" data-reveal>
-              <h2 data-i18n="blocks.ventures.title">{copy.pt.blocks.ventures.title}</h2>
+              <h2>How we think</h2>
+              <p>Operator-first</p>
+            </div>
+
+            <div class="list">
+              <div class="listItem" data-reveal data-hover>
+                <div class="bullet" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M20 7L10 17l-5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div>
+                  <h3 style="margin:0 0 6px; font-size:14px;">Speed with rigor</h3>
+                  <p style="margin:0; color:var(--muted); font-size:13px; line-height:1.55;">Move fast with metrics and control. Aesthetic follows clarity.</p>
+                </div>
+              </div>
+
+              <div class="listItem" data-reveal data-hover>
+                <div class="bullet" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M20 7L10 17l-5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div>
+                  <h3 style="margin:0 0 6px; font-size:14px;">Systems &gt; effort</h3>
+                  <p style="margin:0; color:var(--muted); font-size:13px; line-height:1.55;">Automation, data and operational cadence. Consistency beats heroics.</p>
+                </div>
+              </div>
+
+              <div class="listItem" data-reveal data-hover>
+                <div class="bullet" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M20 7L10 17l-5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div>
+                  <h3 style="margin:0 0 6px; font-size:14px;">Brand as an asset</h3>
+                  <p style="margin:0; color:var(--muted); font-size:13px; line-height:1.55;">Details matter. Narrative, product and distribution aligned.</p>
+                </div>
+              </div>
+
+              <div class="listItem" data-reveal data-hover>
+                <div class="bullet" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M20 7L10 17l-5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div>
+                  <h3 style="margin:0 0 6px; font-size:14px;">Capital, well placed</h3>
+                  <p style="margin:0; color:var(--muted); font-size:13px; line-height:1.55;">Fewer bets, deeply understood, with convex upside.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- THESIS PT -->
+          <section id="thesis" data-i18n="pt">
+            <div class="sectionTitle" data-reveal>
+              <h2>Tese</h2>
+              <p>Focus</p>
+            </div>
+
+            <div class="card" data-reveal data-hover>
+              <p style="margin:0; color:var(--muted); font-size:14px; line-height:1.6;">
+                Operamos na intersecção de consumo e software. Gostamos de mercados simples com execução difícil.
+              </p>
+              <div class="tags">
+                <span class="tag">Marcas D2C com distribuição defensável</span>
+                <span class="tag">Infra e analytics para e-commerce</span>
+                <span class="tag">SaaS com dados proprietários</span>
+                <span class="tag">Automação operacional e tooling interno</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- THESIS EN -->
+          <section id="thesis-en" data-i18n="en">
+            <div class="sectionTitle" data-reveal>
+              <h2>Thesis</h2>
+              <p>Focus</p>
+            </div>
+
+            <div class="card" data-reveal data-hover>
+              <p style="margin:0; color:var(--muted); font-size:14px; line-height:1.6;">
+                We operate at the intersection of consumer and software. Simple markets, hard execution.
+              </p>
+              <div class="tags">
+                <span class="tag">D2C brands with defensible distribution</span>
+                <span class="tag">E-commerce infra and analytics</span>
+                <span class="tag">SaaS with proprietary data</span>
+                <span class="tag">Operational automation and internal tooling</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- VENTURES PT -->
+          <section id="ventures" data-i18n="pt">
+            <div class="sectionTitle" data-reveal>
+              <h2>Portfólio e incubação</h2>
               <p>Build + Invest</p>
             </div>
 
             <div class="grid2">
-              <div class="card" data-reveal>
-                <p style="margin:0 0 12px; color:var(--muted); font-size:14px; line-height:1.6;" data-i18n="blocks.ventures.lead">
-                  {copy.pt.blocks.ventures.lead}
+              <div class="card" data-reveal data-hover>
+                <p style="margin:0 0 12px; color:var(--muted); font-size:14px; line-height:1.6;">
+                  Alguns projetos e marcas vivem aqui. Outros entram quando o timing e a energia estão certos.
                 </p>
+
                 <div class="list" style="gap:10px;">
-                  {copy.pt.blocks.ventures.items.map((v) => (
-                    <div class="listItem" data-reveal style="margin:0;">
-                      <div class="bullet" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <path d="M12 2v20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                          <path d="M2 12h20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                        </svg>
-                      </div>
-                      <div>
-                        <h3 style="margin:0 0 4px; font-size:14px;" data-i18n="venture.name">{v.name}</h3>
-                        <p style="margin:0; color:var(--muted); font-size:13px;" data-i18n="venture.desc">{v.desc}</p>
-                      </div>
+                  <div class="listItem" data-reveal data-hover>
+                    <div class="bullet" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none"><path d="M12 2v20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M2 12h20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
                     </div>
-                  ))}
+                    <div>
+                      <h3 style="margin:0 0 4px; font-size:14px;">AUDAX</h3>
+                      <p style="margin:0; color:var(--muted); font-size:13px;">Marca e-commerce</p>
+                    </div>
+                  </div>
+
+                  <div class="listItem" data-reveal data-hover>
+                    <div class="bullet" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none"><path d="M12 2v20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M2 12h20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                    </div>
+                    <div>
+                      <h3 style="margin:0 0 4px; font-size:14px;">ScalerPath</h3>
+                      <p style="margin:0; color:var(--muted); font-size:13px;">SaaS / analytics</p>
+                    </div>
+                  </div>
+
+                  <div class="listItem" data-reveal data-hover>
+                    <div class="bullet" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none"><path d="M12 2v20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M2 12h20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                    </div>
+                    <div>
+                      <h3 style="margin:0 0 4px; font-size:14px;">Chift</h3>
+                      <p style="margin:0; color:var(--muted); font-size:13px;">Produto tech</p>
+                    </div>
+                  </div>
                 </div>
               </div>
 
-              <div class="card" data-reveal>
+              <div class="card" data-reveal data-hover>
                 <h3 style="margin:0 0 8px; font-size:14px;">Signal</h3>
                 <p style="margin:0; color:var(--muted); font-size:13px; line-height:1.55;">
                   • Founders com execução<br/>
                   • Unit economics saudáveis<br/>
                   • Distribuição como moat<br/>
-                  • Dados como vantagem<br/>
+                  • Dados como vantagem
                 </p>
+
                 <div style="height:12px;"></div>
-                <p style="margin:0; color:var(--muted); font-size:13px; line-height:1.55;" data-i18n="blocks.ventures.note">
-                  {copy.pt.blocks.ventures.note}
+                <p style="margin:0; color:var(--muted); font-size:13px; line-height:1.55;">
+                  Se tens uma empresa com tração e queres um parceiro operator-first, fala connosco.
                 </p>
               </div>
             </div>
           </section>
 
-          <!-- CONTACT -->
-          <section id="contact">
+          <!-- VENTURES EN -->
+          <section id="ventures-en" data-i18n="en">
             <div class="sectionTitle" data-reveal>
-              <h2 data-i18n="blocks.contact.title">{copy.pt.blocks.contact.title}</h2>
-              <p>Direct</p>
+              <h2>Portfolio and incubation</h2>
+              <p>Build + Invest</p>
             </div>
 
-            <div class="card contactCard" data-reveal>
-              <div>
-                <p style="margin:0 0 12px; color:var(--muted); font-size:14px; line-height:1.6;" data-i18n="blocks.contact.lead">
-                  {copy.pt.blocks.contact.lead}
+            <div class="grid2">
+              <div class="card" data-reveal data-hover>
+                <p style="margin:0 0 12px; color:var(--muted); font-size:14px; line-height:1.6;">
+                  Some brands and products live here. Others join when timing and energy align.
                 </p>
 
-                <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
-                  <span class="mono"><span data-i18n="blocks.contact.emailLabel">{copy.pt.blocks.contact.emailLabel}</span>: {email}</span>
+                <div class="list" style="gap:10px;">
+                  <div class="listItem" data-reveal data-hover>
+                    <div class="bullet" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none"><path d="M12 2v20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M2 12h20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                    </div>
+                    <div>
+                      <h3 style="margin:0 0 4px; font-size:14px;">AUDAX</h3>
+                      <p style="margin:0; color:var(--muted); font-size:13px;">E-commerce brand</p>
+                    </div>
+                  </div>
+
+                  <div class="listItem" data-reveal data-hover>
+                    <div class="bullet" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none"><path d="M12 2v20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M2 12h20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                    </div>
+                    <div>
+                      <h3 style="margin:0 0 4px; font-size:14px;">ScalerPath</h3>
+                      <p style="margin:0; color:var(--muted); font-size:13px;">SaaS / analytics</p>
+                    </div>
+                  </div>
+
+                  <div class="listItem" data-reveal data-hover>
+                    <div class="bullet" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none"><path d="M12 2v20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M2 12h20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                    </div>
+                    <div>
+                      <h3 style="margin:0 0 4px; font-size:14px;">Chift</h3>
+                      <p style="margin:0; color:var(--muted); font-size:13px;">Tech product</p>
+                    </div>
+                  </div>
                 </div>
               </div>
 
+              <div class="card" data-reveal data-hover>
+                <h3 style="margin:0 0 8px; font-size:14px;">Signal</h3>
+                <p style="margin:0; color:var(--muted); font-size:13px; line-height:1.55;">
+                  • Operators who execute<br/>
+                  • Healthy unit economics<br/>
+                  • Distribution as a moat<br/>
+                  • Data as an advantage
+                </p>
+
+                <div style="height:12px;"></div>
+                <p style="margin:0; color:var(--muted); font-size:13px; line-height:1.55;">
+                  If you have traction and want an operator-first partner, reach out.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- CONTACT PT -->
+          <section id="contact" data-i18n="pt">
+            <div class="sectionTitle" data-reveal>
+              <h2>Contacto</h2>
+              <p>Direct</p>
+            </div>
+
+            <div class="card contactCard" data-reveal data-hover>
+              <div>
+                <p style="margin:0 0 12px; color:var(--muted); font-size:14px; line-height:1.6;">
+                  Sem rodeios. Diz o que tens, o que precisas e qual o objetivo.
+                </p>
+                <span class="mono">Email: {EMAIL}</span>
+              </div>
+
               <div class="contactRight">
-                <a class="btn primary hoverable" href={"mailto:" + email}>
+                <a class="btn primary hoverable" href={`mailto:${EMAIL}`} data-hover>
                   <span class="ic" aria-hidden="true">
                     <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4V6z" stroke="currentColor" stroke-width="1.6"/><path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </span>
-                  <span data-i18n="blocks.contact.cta">{copy.pt.blocks.contact.cta}</span>
+                  <span>Enviar email</span>
                 </a>
               </div>
             </div>
 
-            <footer data-reveal>
-              <span data-i18n="blocks.contact.footer">{copy.pt.blocks.contact.footer}</span>
-            </footer>
+            <footer data-reveal>RAPDM. Operar bem é uma forma de respeito.</footer>
           </section>
+
+          <!-- CONTACT EN -->
+          <section id="contact-en" data-i18n="en">
+            <div class="sectionTitle" data-reveal>
+              <h2>Contact</h2>
+              <p>Direct</p>
+            </div>
+
+            <div class="card contactCard" data-reveal data-hover>
+              <div>
+                <p style="margin:0 0 12px; color:var(--muted); font-size:14px; line-height:1.6;">
+                  No fluff. Tell us what you have, what you need, and the target outcome.
+                </p>
+                <span class="mono">Email: {EMAIL}</span>
+              </div>
+
+              <div class="contactRight">
+                <a class="btn primary hoverable" href={`mailto:${EMAIL}`} data-hover>
+                  <span class="ic" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4V6z" stroke="currentColor" stroke-width="1.6"/><path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                  <span>Send email</span>
+                </a>
+              </div>
+            </div>
+
+            <footer data-reveal>RAPDM. Operating well is a form of respect.</footer>
+          </section>
+
         </div>
       </main>
     </div>
 
     <script is:inline>
-      // PT/EN toggle (persists)
+      // Language toggle: show/hide [data-i18n] sections
       const langButtons = document.querySelectorAll("[data-lang]");
-      const langSections = document.querySelectorAll("[data-i18n]");
+      const sections = document.querySelectorAll("[data-i18n]");
+
       const setLang = (lang) => {
-        localStorage.setItem("rapdm_lang", lang);
+        try { localStorage.setItem("rapdm_lang", lang); } catch {}
         langButtons.forEach((b) => b.setAttribute("aria-pressed", b.dataset.lang === lang ? "true" : "false"));
-        langSections.forEach((el) => (el.style.display = el.dataset.i18n === lang ? "" : "none"));
-        document.documentElement.lang = lang === "pt" ? "pt-PT" : "en";
+        sections.forEach((el) => { el.style.display = (el.dataset.i18n === lang) ? "" : "none"; });
+        document.documentElement.lang = (lang === "pt") ? "pt-PT" : "en";
       };
 
-      const saved = localStorage.getItem("rapdm_lang") || "pt";
+      const saved = (() => { try { return localStorage.getItem("rapdm_lang"); } catch { return null; } })() || "pt";
       setLang(saved);
       langButtons.forEach((b) => b.addEventListener("click", () => setLang(b.dataset.lang)));
 
-      // Soft reveal on scroll
+      // Reveal on scroll
       const io = new IntersectionObserver(
         (entries) => entries.forEach((e) => e.isIntersecting && e.target.classList.add("revealed")),
         { threshold: 0.12 }
       );
       document.querySelectorAll("[data-reveal]").forEach((el) => io.observe(el));
 
-      // Cursor follower (desktop only)
-      const cursor = document.querySelector(".cursor");
-      if (cursor && window.matchMedia("(pointer:fine)").matches) {
-        let x = 0, y = 0, tx = 0, ty = 0;
+      // Cursor (desktop only)
+      const glow = document.getElementById("cursorGlow");
+      const dot = document.getElementById("cursorDot");
+
+      const canHover = window.matchMedia && window.matchMedia("(pointer:fine)").matches;
+      if (glow && dot && canHover) {
+        let gx = 0, gy = 0, dx = 0, dy = 0, tx = 0, ty = 0;
+        glow.style.opacity = "1";
+        dot.style.opacity = "1";
+
         const tick = () => {
-          x += (tx - x) * 0.14;
-          y += (ty - y) * 0.14;
-          cursor.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+          gx += (tx - gx) * 0.10;
+          gy += (ty - gy) * 0.10;
+          dx += (tx - dx) * 0.22;
+          dy += (ty - dy) * 0.22;
+          glow.style.left = gx + "px";
+          glow.style.top = gy + "px";
+          dot.style.left = dx + "px";
+          dot.style.top = dy + "px";
           requestAnimationFrame(tick);
         };
+
         window.addEventListener("mousemove", (e) => {
           tx = e.clientX;
           ty = e.clientY;
-        });
-        tick();
+        }, { passive: true });
 
+        // Hover state
         document.querySelectorAll("a, button, [data-hover]").forEach((el) => {
-          el.addEventListener("mouseenter", () => cursor.classList.add("active"));
-          el.addEventListener("mouseleave", () => cursor.classList.remove("active"));
+          el.addEventListener("mouseenter", () => dot.classList.add("active"));
+          el.addEventListener("mouseleave", () => dot.classList.remove("active"));
         });
-      } else if (cursor) {
-        cursor.style.display = "none";
+
+        tick();
+      } else {
+        if (glow) glow.style.display = "none";
+        if (dot) dot.style.display = "none";
       }
-    </script>
-
-
-      const initial = (localStorage.getItem("rapdm_lang") === "en") ? "en" : "pt";
-      setActive(initial);
-
-      btnPT.addEventListener("click", () => setActive("pt"));
-      btnEN.addEventListener("click", () => setActive("en"));
-
-      // Reveal on scroll
-      const els = Array.from(document.querySelectorAll("[data-reveal]"));
-      const io = new IntersectionObserver((entries) => {
-        for (const e of entries){
-          if (e.isIntersecting){
-            e.target.classList.add("in");
-            io.unobserve(e.target);
-          }
-        }
-      }, { threshold: 0.12 });
-      els.forEach(el => io.observe(el));
-
-      // Cursor glow (desktop only)
-      const glow = document.getElementById("cursorGlow");
-      let raf = 0;
-      let mx = 0, my = 0;
-      window.addEventListener("mousemove", (ev) => {
-        mx = ev.clientX; my = ev.clientY;
-        glow.style.opacity = "1";
-        if (!raf){
-          raf = requestAnimationFrame(() => {
-            glow.style.left = mx + "px";
-            glow.style.top = my + "px";
-            raf = 0;
-          });
-        }
-      }, { passive: true });
-
-      window.addEventListener("mouseleave", () => {
-        glow.style.opacity = "0";
-      });
-
-      // Fancy hover scale on "hoverable"
-      document.querySelectorAll(".hoverable").forEach(el => {
-        el.addEventListener("pointerenter", () => {
-          glow.style.opacity = "1";
-        });
-      });
     </script>
   </body>
 </html>
