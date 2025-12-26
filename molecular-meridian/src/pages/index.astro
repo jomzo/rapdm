@@ -1,845 +1,866 @@
----
-const SITE_TITLE = "RAPDM | Holding Company + Venture Studio";
-const FORM_ENDPOINT = "https://formspree.io/f/REPLACE_ME"; // troca pelo teu endpoint
----
-
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="RAPDM. Holding Company + Venture Studio." />
-    <meta name="theme-color" content="#FFFFFF" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="RAPDM. Holding Company + Venture Studio." />
+  <meta name="theme-color" content="#FFFFFF" />
+  <title>RAPDM | Holding Company + Venture Studio</title>
+  
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg2: #fafbfc;
+      --panel: rgba(255,255,255,.90);
+      --line: rgba(15,23,42,.10);
+      --line2: rgba(15,23,42,.06);
+      
+      --ink: rgba(15,23,42,.95);
+      --muted: rgba(15,23,42,.65);
+      --muted2: rgba(15,23,42,.50);
+      
+      --accent: #0066cc;
+      --accent2: #0077ed;
+      
+      --shadow: 0 1px 3px rgba(0,0,0,.04), 0 8px 24px rgba(0,0,0,.06);
+      --shadow-lg: 0 4px 6px rgba(0,0,0,.04), 0 20px 40px rgba(0,0,0,.08);
+      --r: 12px;
+      --r2: 16px;
+      --max: 1200px;
+      --ease: cubic-bezier(.4,0,.2,1);
+      --header-h: 72px;
+    }
 
-    <title>{SITE_TITLE}</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preload" as="image" href="/rapdm-logo.png" />
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; height: 100%; }
+    body {
+      height: 100%;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      overflow-x: hidden;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
 
-    <style>
-      :root{
-        --bg:#ffffff;
-        --bg2:#f6f8fb;
-        --panel:rgba(255,255,255,.86);
-        --line:rgba(15,23,42,.12);
-        --line2:rgba(15,23,42,.08);
+    /* Apple × McKinsey inspired background */
+    .bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background: linear-gradient(180deg, #fafbfc 0%, #ffffff 100%);
+    }
+    
+    .bg-gradient {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      animation: gradientPulse 12s ease-in-out infinite;
+    }
+    
+    .bg-gradient:nth-child(1) {
+      background: radial-gradient(ellipse 1200px 600px at 50% 0%, rgba(0,102,204,.08), transparent 70%);
+      animation-delay: 0s;
+    }
+    
+    .bg-gradient:nth-child(2) {
+      background: radial-gradient(ellipse 1000px 500px at 20% 40%, rgba(0,119,237,.06), transparent 65%);
+      animation-delay: -4s;
+    }
+    
+    .bg-gradient:nth-child(3) {
+      background: radial-gradient(ellipse 1000px 500px at 80% 60%, rgba(0,102,204,.05), transparent 65%);
+      animation-delay: -8s;
+    }
 
-        --ink:rgba(15,23,42,.92);
-        --muted:rgba(15,23,42,.66);
-        --muted2:rgba(15,23,42,.52);
+    .bg-mesh {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(to right, rgba(15,23,42,.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(15,23,42,.02) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,0,0,.6), transparent 85%);
+    }
 
-        --accent:#1b4dff;
-        --accent2:#2f7dff;
+    .bg-orbs {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
 
-        --shadow:0 18px 50px rgba(2,8,23,.10);
-        --r2:18px;
-        --max:1160px;
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0;
+      animation: orbFloat 20s ease-in-out infinite;
+    }
 
-        --ease:cubic-bezier(.2,.8,.2,1);
-        --headerH:78px;
-      }
+    .orb:nth-child(1) {
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(0,102,204,.12), transparent 70%);
+      top: -200px;
+      left: 10%;
+      animation-delay: 0s;
+    }
 
-      *{box-sizing:border-box;}
-      html,body{height:100%;}
-      html{scroll-behavior:smooth;}
-      body{
-        margin:0;
-        font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial;
-        color:var(--ink);
-        background:linear-gradient(180deg,var(--bg),var(--bg2));
-        overflow-x:hidden;
-      }
+    .orb:nth-child(2) {
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(0,119,237,.10), transparent 70%);
+      top: 20%;
+      right: 15%;
+      animation-delay: -7s;
+    }
 
-      /* Subtle animated top background */
-      .bg{
-        position:fixed;
-        inset:0;
-        pointer-events:none;
-        z-index:0;
-      }
-      .bg::before{
-        content:"";
-        position:absolute;
-        left:0; right:0; top:0;
-        height:520px;
-        background:
-          radial-gradient(900px 520px at 20% 10%, rgba(27,77,255,.14), transparent 60%),
-          radial-gradient(900px 520px at 80% 14%, rgba(47,125,255,.10), transparent 60%),
-          linear-gradient(180deg, rgba(2,6,23,.04), transparent 70%);
-        filter:saturate(1.05);
-        animation:hueFloat 14s var(--ease) infinite;
-        will-change:filter,transform;
-      }
-      .bg::after{
-        content:"";
-        position:absolute;
-        inset:0;
-        background-image:
-          linear-gradient(to right, rgba(2,6,23,.06) 1px, transparent 1px),
-          linear-gradient(to bottom, rgba(2,6,23,.06) 1px, transparent 1px);
-        background-size:92px 92px;
-        opacity:.18;
-        mask-image: radial-gradient(60% 40% at 50% 0%, rgba(0,0,0,1), transparent 70%);
-      }
-      @keyframes hueFloat{
-        0%{transform:translate3d(0,0,0) scale(1); filter:hue-rotate(0deg);}
-        50%{transform:translate3d(.8%,-.6%,0) scale(1.02); filter:hue-rotate(10deg);}
-        100%{transform:translate3d(0,0,0) scale(1); filter:hue-rotate(0deg);}
-      }
+    .orb:nth-child(3) {
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(0,102,204,.08), transparent 70%);
+      bottom: 10%;
+      left: 20%;
+      animation-delay: -14s;
+    }
 
-      .wrap{position:relative; z-index:1; min-height:100%;}
-      .container{width:min(var(--max), calc(100% - 48px)); margin:0 auto;}
-      @media (max-width:640px){ .container{width:calc(100% - 28px);} }
+    @keyframes gradientPulse {
+      0%, 100% { opacity: 0; transform: translate(0, 0) scale(1); }
+      50% { opacity: 1; transform: translate(2%, -2%) scale(1.05); }
+    }
 
-      header{
-        position:sticky;
-        top:0;
-        z-index:50;
-        background:rgba(255,255,255,.72);
-        backdrop-filter:blur(12px);
-        border-bottom:1px solid var(--line2);
+    @keyframes orbFloat {
+      0%, 100% { 
+        opacity: 0;
+        transform: translate(0, 0) scale(1);
       }
+      25% { 
+        opacity: .5;
+        transform: translate(30px, -30px) scale(1.1);
+      }
+      50% { 
+        opacity: .7;
+        transform: translate(-20px, 40px) scale(.95);
+      }
+      75% { 
+        opacity: .5;
+        transform: translate(20px, 20px) scale(1.05);
+      }
+    }
 
-      .nav{
-        height:var(--headerH);
-        display:flex;
-        align-items:center;
-        justify-content:space-between;
-        gap:14px;
-      }
+    .wrap { position: relative; z-index: 1; min-height: 100%; }
+    .container { 
+      width: min(var(--max), calc(100% - 64px)); 
+      margin: 0 auto; 
+    }
+    
+    @media (max-width: 768px) { 
+      .container { width: calc(100% - 32px); } 
+    }
 
-      .brand{
-        display:flex;
-        align-items:center;
-        text-decoration:none;
-        color:inherit;
-        gap:12px;
-        min-width:160px;
-      }
-      .brand img{
-        height:52px; /* maior */
-        width:auto;
-        display:block;
-      }
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,.85);
+      backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid var(--line);
+    }
 
-      nav{
-        display:flex;
-        align-items:center;
-        gap:10px;
-        flex:1;
-        justify-content:center;
-      }
-      nav a{
-        text-decoration:none;
-        color:rgba(15,23,42,.74);
-        font-size:13px;
-        padding:10px 10px;
-        border-radius:999px;
-        transition:background .2s var(--ease), color .2s var(--ease);
-      }
-      nav a:hover{
-        background:rgba(2,6,23,.05);
-        color:rgba(15,23,42,.92);
-      }
+    .nav {
+      height: var(--header-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
 
-      .right{
-        display:flex;
-        align-items:center;
-        gap:10px;
-        justify-content:flex-end;
-        min-width:160px;
-      }
+    .brand {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: inherit;
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -.02em;
+      min-width: 140px;
+    }
 
-      .lang{
-        display:flex;
-        border:1px solid var(--line);
-        background:rgba(255,255,255,.75);
-        border-radius:999px;
-        overflow:hidden;
-      }
-      .lang button{
-        border:0;
-        background:transparent;
-        color:rgba(15,23,42,.70);
-        cursor:pointer;
-        padding:10px 12px;
-        font-size:12px;
-        transition:background .2s var(--ease), color .2s var(--ease);
-      }
-      .lang button[aria-pressed="true"]{
-        background:rgba(2,6,23,.06);
-        color:rgba(15,23,42,.92);
-        font-weight:700;
-      }
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex: 1;
+      justify-content: center;
+    }
+    
+    nav a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 8px;
+      transition: all .2s var(--ease);
+    }
+    
+    nav a:hover {
+      background: rgba(0,0,0,.04);
+      color: var(--ink);
+    }
 
-      @media (max-width:760px){ nav{display:none;} }
+    .right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      justify-content: flex-end;
+      min-width: 140px;
+    }
 
-      main{padding:36px 0 92px;}
-      section{padding:34px 0;}
-      section[id]{scroll-margin-top:calc(var(--headerH) + 16px);}
+    .lang {
+      display: flex;
+      background: rgba(0,0,0,.04);
+      border-radius: 8px;
+      overflow: hidden;
+      padding: 2px;
+    }
+    
+    .lang button {
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 500;
+      border-radius: 6px;
+      transition: all .2s var(--ease);
+    }
+    
+    .lang button[aria-pressed="true"] {
+      background: white;
+      color: var(--ink);
+      box-shadow: 0 1px 2px rgba(0,0,0,.08);
+    }
 
-      /* Hero */
-      .hero{padding:40px 0 20px; display:grid; gap:16px;}
-      .kicker{
-        display:inline-flex;
-        align-items:center;
-        gap:10px;
-        padding:10px 12px;
-        border-radius:999px;
-        border:1px solid var(--line);
-        background:rgba(255,255,255,.70);
-        color:rgba(15,23,42,.72);
-        font-size:12px;
-        width:fit-content;
-        box-shadow:0 10px 30px rgba(2,8,23,.05);
-      }
-      .dot{
-        width:8px;height:8px;border-radius:999px;
-        background:var(--accent);
-        box-shadow:0 10px 18px rgba(27,77,255,.18);
-      }
-      .sub{
-        margin:0;
-        color:var(--muted);
-        font-size:15px;
-        line-height:1.68;
-        max-width:920px;
-      }
+    @media (max-width: 860px) { 
+      nav { display: none; }
+      .right { min-width: auto; }
+    }
 
-      .heroActions{
-        display:flex;
-        gap:10px;
-        flex-wrap:wrap;
-        margin-top:10px;
-      }
-      .btn{
-        display:inline-flex;
-        align-items:center;
-        justify-content:center;
-        gap:10px;
-        border-radius:999px;
-        padding:12px 14px;
-        font-size:13px;
-        text-decoration:none;
-        cursor:pointer;
-        border:1px solid var(--line);
-        background:rgba(255,255,255,.78);
-        color:rgba(15,23,42,.90);
-        transition:transform .2s var(--ease), border-color .2s var(--ease), box-shadow .2s var(--ease);
-        white-space:nowrap;
-        box-shadow:0 12px 34px rgba(2,8,23,.06);
-      }
-      .btn:hover{
-        transform:translateY(-1px);
-        border-color:rgba(27,77,255,.28);
-        box-shadow:0 16px 44px rgba(2,8,23,.09);
-      }
-      .btn.primary{
-        background:linear-gradient(180deg, rgba(27,77,255,.95), rgba(47,125,255,.86));
-        border-color:rgba(27,77,255,.28);
-        color:#fff;
-      }
+    /* Main */
+    main { padding: 48px 0 120px; }
+    section { padding: 48px 0; }
+    section[id] { scroll-margin-top: calc(var(--header-h) + 24px); }
 
-      /* Sections */
-      .sectionHead{
-        display:flex;
-        align-items:baseline;
-        justify-content:space-between;
-        gap:14px;
-        margin-bottom:14px;
-      }
-      .sectionHead h2{
-        margin:0;
-        font-size:14px;
-        letter-spacing:.10em;
-        text-transform:uppercase;
-        color:rgba(15,23,42,.64);
-      }
-      .sectionHead p{
-        margin:0;
-        font-size:13px;
-        color:var(--muted2);
-      }
+    /* Hero */
+    .hero { 
+      padding: 80px 0 60px; 
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: rgba(0,102,204,.08);
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+    
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s ease-in-out infinite;
+    }
 
-      .surface{
-        border:1px solid var(--line2);
-        background:rgba(255,255,255,.72);
-        border-radius:var(--r2);
-        box-shadow:var(--shadow);
-      }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: .6; transform: scale(1.2); }
+    }
 
-      .grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
-      .grid2{display:grid; grid-template-columns:repeat(2,1fr); gap:14px;}
-      @media (max-width:980px){
-        .grid3{grid-template-columns:1fr;}
-        .grid2{grid-template-columns:1fr;}
-      }
+    .hero h1 {
+      font-size: 56px;
+      font-weight: 700;
+      letter-spacing: -.03em;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      color: var(--ink);
+    }
 
-      .card{
-        padding:18px;
-        border-radius:var(--r2);
-        border:1px solid var(--line2);
-        background:rgba(255,255,255,.80);
-        transition:transform .2s var(--ease), border-color .2s var(--ease);
-      }
-      .card:hover{transform:translateY(-2px); border-color:rgba(27,77,255,.20);}
-      .card h3{margin:0 0 8px; font-size:15px; color:rgba(15,23,42,.92);}
-      .card p{margin:0; color:var(--muted); font-size:13px; line-height:1.55;}
+    .sub {
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--muted);
+      margin-bottom: 36px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
 
-      .portfolioCard a{
-        display:flex;
-        align-items:center;
-        justify-content:space-between;
-        gap:14px;
-        color:inherit;
-        text-decoration:none;
-      }
-      .pill{
-        font-size:11px;
-        padding:6px 10px;
-        border-radius:999px;
-        border:1px solid var(--line);
-        background:rgba(2,6,23,.03);
-        color:rgba(15,23,42,.70);
-        width:fit-content;
-      }
-      .arrow{
-        width:34px;height:34px;
-        border-radius:999px;
-        border:1px solid var(--line);
-        background:rgba(2,6,23,.03);
-        display:grid;
-        place-items:center;
-        flex:0 0 auto;
-      }
-      .arrow svg{width:16px;height:16px;color:rgba(15,23,42,.82);}
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
 
-      /* Form */
-      form{display:grid; gap:10px;}
-      .row2{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
-      @media (max-width:720px){ .row2{grid-template-columns:1fr;} }
+    @media (max-width: 768px) {
+      .hero { padding: 48px 0 40px; }
+      .hero h1 { font-size: 36px; }
+      .sub { font-size: 16px; }
+    }
 
-      label{font-size:12px; color:rgba(15,23,42,.70); display:block; margin:0 0 6px;}
-      input, textarea, select{
-        width:100%;
-        border-radius:14px;
-        border:1px solid var(--line);
-        background:rgba(255,255,255,.92);
-        padding:12px 12px;
-        font-size:13px;
-        color:rgba(15,23,42,.90);
-        outline:none;
-        transition:border-color .2s var(--ease), box-shadow .2s var(--ease);
-      }
-      textarea{min-height:140px; resize:vertical;}
-      input:focus, textarea:focus, select:focus{
-        border-color:rgba(27,77,255,.34);
-        box-shadow:0 0 0 4px rgba(27,77,255,.10);
-      }
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-radius: 10px;
+      padding: 12px 24px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: 1px solid var(--line);
+      background: white;
+      color: var(--ink);
+      transition: all .2s var(--ease);
+      box-shadow: var(--shadow);
+    }
+    
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(0,0,0,.12);
+    }
+    
+    .btn.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+    
+    .btn.primary:hover {
+      background: var(--accent2);
+      border-color: var(--accent2);
+    }
 
-      .formRow{display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap; margin-top:6px;}
-      .status{font-size:12px; color:rgba(15,23,42,.64);}
-      .status.ok{color:rgba(15,23,42,.82);}
-      .status.err{color:rgba(210,30,70,.90);}
+    /* Sections */
+    .section-head {
+      margin-bottom: 32px;
+      text-align: center;
+    }
+    
+    .section-head h2 {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    
+    .section-head p {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -.02em;
+      color: var(--ink);
+    }
 
-      footer{padding:26px 0 0; color:rgba(15,23,42,.54); font-size:12px;}
-      .footRow{
-        display:flex;
-        justify-content:space-between;
-        align-items:center;
-        gap:12px;
-        flex-wrap:wrap;
-        border-top:1px solid var(--line2);
-        padding-top:14px;
-        margin-top:18px;
-      }
-      .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;}
+    /* Grid */
+    .grid { 
+      display: grid; 
+      gap: 24px; 
+    }
+    
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    
+    @media (max-width: 1024px) {
+      .grid-3 { grid-template-columns: 1fr; }
+      .grid-2 { grid-template-columns: 1fr; }
+    }
 
-      /* Cookies banner */
-      .cookie{position:fixed; left:18px; right:18px; bottom:18px; z-index:60; display:none;}
-      .cookieInner{
-        max-width:980px;
-        margin:0 auto;
-        padding:14px 14px;
-        border-radius:16px;
-        border:1px solid var(--line);
-        background:rgba(255,255,255,.86);
-        backdrop-filter:blur(12px);
-        box-shadow:0 18px 60px rgba(2,8,23,.14);
-        display:flex;
-        align-items:center;
-        justify-content:space-between;
-        gap:12px;
-        flex-wrap:wrap;
-      }
-      .cookieText{color:rgba(15,23,42,.70); font-size:12px; line-height:1.45; max-width:680px;}
-      .cookieActions{display:flex; gap:10px; flex-wrap:wrap;}
-      .cookieBtn{
-        border-radius:999px;
-        border:1px solid var(--line);
-        background:rgba(255,255,255,.92);
-        color:rgba(15,23,42,.86);
-        padding:10px 12px;
-        font-size:12px;
-        cursor:pointer;
-        transition:transform .2s var(--ease), border-color .2s var(--ease);
-      }
-      .cookieBtn:hover{transform:translateY(-1px); border-color:rgba(27,77,255,.20);}
-      .cookieBtn.primary{background:rgba(2,6,23,.03);}
-    </style>
-  </head>
+    /* Cards */
+    .card {
+      padding: 32px;
+      border-radius: var(--r2);
+      border: 1px solid var(--line);
+      background: white;
+      transition: all .3s var(--ease);
+    }
+    
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(0,102,204,.2);
+    }
+    
+    .card h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--ink);
+    }
+    
+    .card p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.6;
+    }
 
-  <body>
-    <div class="bg" aria-hidden="true"></div>
+    .portfolio-card a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      color: inherit;
+      text-decoration: none;
+    }
+    
+    .pill {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: rgba(0,102,204,.1);
+      color: var(--accent);
+      margin-top: 8px;
+      display: inline-block;
+    }
+    
+    .arrow {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(0,0,0,.04);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      transition: all .2s var(--ease);
+    }
+    
+    .portfolio-card:hover .arrow {
+      background: var(--accent);
+    }
+    
+    .arrow svg {
+      width: 16px;
+      height: 16px;
+      color: var(--muted);
+      transition: color .2s var(--ease);
+    }
+    
+    .portfolio-card:hover .arrow svg {
+      color: white;
+    }
 
-    <div class="wrap">
-      <header>
-        <div class="container">
-          <div class="nav">
-            <a class="brand" href="#top" aria-label="RAPDM">
-              <img src="/rapdm-logo.png" alt="RAPDM" />
-            </a>
+    /* Form */
+    form { display: grid; gap: 20px; }
+    .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    
+    @media (max-width: 768px) { 
+      .row2 { grid-template-columns: 1fr; } 
+    }
 
-            <nav aria-label="Navigation">
-              <a href="#focus" data-t="nav_focus">Focus</a>
-              <a href="#portfolio" data-t="nav_portfolio">Portfolio</a>
-              <a href="#news" data-t="nav_news">News</a>
-              <a href="#careers" data-t="nav_careers">Careers</a>
-            </nav>
+    label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink);
+      display: block;
+      margin-bottom: 8px;
+    }
+    
+    input, textarea, select {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: white;
+      padding: 12px 16px;
+      font-size: 14px;
+      color: var(--ink);
+      outline: none;
+      transition: all .2s var(--ease);
+      font-family: inherit;
+    }
+    
+    textarea { 
+      min-height: 140px; 
+      resize: vertical; 
+    }
+    
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(0,102,204,.1);
+    }
 
-            <div class="right">
-              <div class="lang" role="tablist" aria-label="Language">
-                <button type="button" data-lang="en" aria-pressed="true">EN</button>
-                <button type="button" data-lang="pt" aria-pressed="false">PT</button>
-              </div>
+    .form-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    
+    .status {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    
+    .status.ok { color: #10b981; }
+    .status.err { color: #ef4444; }
+
+    /* Surface */
+    .surface {
+      border: 1px solid var(--line);
+      background: white;
+      border-radius: var(--r2);
+      padding: 40px;
+      box-shadow: var(--shadow);
+    }
+    
+    @media (max-width: 768px) {
+      .surface { padding: 24px; }
+    }
+
+    /* Footer */
+    footer {
+      padding: 32px 0;
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid var(--line);
+      margin-top: 48px;
+    }
+    
+    .foot-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    
+    .mono {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    /* Cookie banner */
+    .cookie {
+      position: fixed;
+      left: 20px;
+      right: 20px;
+      bottom: 20px;
+      z-index: 200;
+      display: none;
+    }
+    
+    .cookie-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px 24px;
+      border-radius: var(--r2);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.95);
+      backdrop-filter: blur(20px);
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    
+    .cookie-text {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+      max-width: 700px;
+    }
+    
+    .cookie-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    
+    .cookie-btn {
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: white;
+      color: var(--ink);
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .2s var(--ease);
+    }
+    
+    .cookie-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow);
+    }
+    
+    .cookie-btn.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg">
+    <div class="bg-gradient"></div>
+    <div class="bg-gradient"></div>
+    <div class="bg-gradient"></div>
+    <div class="bg-mesh"></div>
+    <div class="bg-orbs">
+      <div class="orb"></div>
+      <div class="orb"></div>
+      <div class="orb"></div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <header>
+      <div class="container">
+        <div class="nav">
+          <a class="brand" href="#top">RAPDM</a>
+
+          <nav>
+            <a href="#focus" data-t="nav_focus">Focus</a>
+            <a href="#portfolio" data-t="nav_portfolio">Portfolio</a>
+            <a href="#news" data-t="nav_news">News</a>
+            <a href="#careers" data-t="nav_careers">Careers</a>
+          </nav>
+
+          <div class="right">
+            <div class="lang" role="tablist">
+              <button type="button" data-lang="en" aria-pressed="true">EN</button>
+              <button type="button" data-lang="pt" aria-pressed="false">PT</button>
             </div>
-          </div>
-        </div>
-      </header>
-
-      <main id="top">
-        <div class="container">
-
-          <!-- HERO: no H1 -->
-          <section class="hero">
-            <div class="kicker">
-              <span class="dot"></span>
-              <span data-t="kicker">Holding Company + Venture Studio</span>
-            </div>
-
-            <p class="sub" data-t="hero_sub">
-              RAPDM operates as a holding company and venture studio, building and investing in ventures with clear governance, disciplined capital allocation and pragmatic operations.
-            </p>
-
-            <div class="heroActions">
-              <a class="btn primary" href="#portfolio" data-t="hero_cta_primary">View portfolio</a>
-              <a class="btn" href="/news" data-t="hero_cta_secondary">Read news</a>
-              <a class="btn" href="#contact" data-t="hero_cta_contact">Contact</a>
-            </div>
-          </section>
-
-          <section id="focus">
-            <div class="sectionHead">
-              <h2 data-t="focus_h">Focus</h2>
-              <p data-t="focus_p">What we do</p>
-            </div>
-
-            <div class="grid3">
-              <div class="card">
-                <h3 data-t="focus_1_t">Holding</h3>
-                <p data-t="focus_1_d">Governance, capital allocation, reporting and long-term value creation.</p>
-              </div>
-              <div class="card">
-                <h3 data-t="focus_2_t">Venture Studio</h3>
-                <p data-t="focus_2_d">Validation, product and operations with an execution-first mindset.</p>
-              </div>
-              <div class="card">
-                <h3 data-t="focus_3_t">Investment</h3>
-                <p data-t="focus_3_d">Selective deployments where fundamentals and distribution are strong.</p>
-              </div>
-            </div>
-          </section>
-
-          <section id="portfolio">
-            <div class="sectionHead">
-              <h2 data-t="port_h">Portfolio</h2>
-              <p data-t="port_p">Holdings and ventures</p>
-            </div>
-
-            <div class="grid3">
-              <div class="card portfolioCard">
-                <a href="https://www.linkedin.com/company/79813925/" target="_blank" rel="noreferrer">
-                  <div>
-                    <h3>AUDAX</h3>
-                    <p data-t="audax_d">E-commerce brands.</p>
-                    <div class="pill" data-t="open">Open</div>
-                  </div>
-                  <div class="arrow" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none">
-                      <path d="M7 17L17 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                      <path d="M10 7h7v7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                  </div>
-                </a>
-              </div>
-
-              <div class="card portfolioCard">
-                <a href="https://scalerpath.com" target="_blank" rel="noreferrer">
-                  <div>
-                    <h3>ScalerPath</h3>
-                    <p data-t="scaler_d">SaaS and analytics.</p>
-                    <div class="pill" data-t="open">Open</div>
-                  </div>
-                  <div class="arrow" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none">
-                      <path d="M7 17L17 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                      <path d="M10 7h7v7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                  </div>
-                </a>
-              </div>
-
-              <div class="card portfolioCard">
-                <a href="https://chift.io" target="_blank" rel="noreferrer">
-                  <div>
-                    <h3>Chift</h3>
-                    <p data-t="chift_d">Product and execution.</p>
-                    <div class="pill" data-t="open">Open</div>
-                  </div>
-                  <div class="arrow" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none">
-                      <path d="M7 17L17 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                      <path d="M10 7h7v7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </section>
-
-          <section id="news">
-            <div class="sectionHead">
-              <h2 data-t="news_h">News</h2>
-              <p data-t="news_p">Updates and publications</p>
-            </div>
-
-            <div class="surface" style="padding:18px;">
-              <div class="grid2">
-                <div class="card" style="background: rgba(255,255,255,.88);">
-                  <h3 data-t="news_1_t">Blog-style posts</h3>
-                  <p data-t="news_1_d">News is published as Markdown. Add a file and deploy.</p>
-                </div>
-                <div class="card" style="background: rgba(255,255,255,.88);">
-                  <h3 data-t="news_2_t">View all</h3>
-                  <p data-t="news_2_d">Full list and individual pages at /news.</p>
-                  <div style="margin-top:12px;">
-                    <a class="btn" href="/news" data-t="news_btn">Open /news</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section id="careers">
-            <div class="sectionHead">
-              <h2 data-t="car_h">Careers</h2>
-              <p data-t="car_p">Open roles</p>
-            </div>
-
-            <div class="grid2">
-              <div class="card">
-                <h3 data-t="role_1_t">Ops / Systems Associate</h3>
-                <p data-t="role_1_d">Automation, reporting, process design and internal tooling.</p>
-              </div>
-              <div class="card">
-                <h3 data-t="role_2_t">Analyst (Investments)</h3>
-                <p data-t="role_2_d">Screening, research, memos, diligence and follow-up.</p>
-              </div>
-              <div class="card">
-                <h3 data-t="role_3_t">Growth (Consumer)</h3>
-                <p data-t="role_3_d">Performance testing, measurement and efficient allocation.</p>
-              </div>
-              <div class="card">
-                <h3 data-t="role_4_t">Product / Data</h3>
-                <p data-t="role_4_d">Product execution, data instrumentation and decision support.</p>
-              </div>
-            </div>
-          </section>
-
-          <section id="contact">
-            <div class="sectionHead">
-              <h2 data-t="ct_h">Contact</h2>
-              <p data-t="ct_p">One form for all requests</p>
-            </div>
-
-            <div class="surface" style="padding:18px;">
-              <form id="contactForm">
-                <div class="row2">
-                  <div>
-                    <label for="name" data-t="f_name">Name</label>
-                    <input id="name" name="name" type="text" required placeholder="Full name" />
-                  </div>
-                  <div>
-                    <label for="email" data-t="f_email">Email</label>
-                    <input id="email" name="email" type="email" required placeholder="name@company.com" />
-                  </div>
-                </div>
-
-                <div class="row2">
-                  <div>
-                    <label for="category" data-t="f_type">Category</label>
-                    <select id="category" name="category" required>
-                      <option value="" selected disabled data-t="f_select">Select</option>
-                      <option value="Investment">Investment</option>
-                      <option value="Partnership">Partnership</option>
-                      <option value="Careers">Careers</option>
-                      <option value="Press">Press</option>
-                      <option value="General">General</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label for="link" data-t="f_link">Link (optional)</label>
-                    <input id="link" name="link" type="url" placeholder="Deck, LinkedIn, website, etc." />
-                  </div>
-                </div>
-
-                <div class="row2">
-                  <div>
-                    <label for="company" data-t="f_company">Company (optional)</label>
-                    <input id="company" name="company" type="text" placeholder="Company / project" />
-                  </div>
-                  <div>
-                    <label for="role" data-t="f_role">Role (if Careers)</label>
-                    <input id="role" name="role" type="text" placeholder="e.g., Ops / Systems Associate" />
-                  </div>
-                </div>
-
-                <div>
-                  <label for="message" data-t="f_msg">Message</label>
-                  <textarea id="message" name="message" required placeholder="Short, factual and clear."></textarea>
-                </div>
-
-                <div class="formRow">
-                  <button class="btn primary" type="submit" data-t="f_send">Send</button>
-                  <span id="formStatus" class="status" aria-live="polite"></span>
-                </div>
-              </form>
-
-              <footer>
-                <div class="footRow">
-                  <span>© <span class="mono" id="year"></span> RAPDM. All rights reserved.</span>
-                  <span class="mono">joao@rapdm.co</span>
-                </div>
-              </footer>
-            </div>
-          </section>
-
-        </div>
-      </main>
-
-      <div class="cookie" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Cookies">
-        <div class="cookieInner">
-          <div class="cookieText" id="cookieText">
-            We use cookies to improve experience and measure performance. You can accept or reject non-essential cookies.
-          </div>
-          <div class="cookieActions">
-            <button class="cookieBtn" id="cookieReject">Reject</button>
-            <button class="cookieBtn primary" id="cookieAccept">Accept</button>
           </div>
         </div>
       </div>
-    </div>
+    </header>
 
-    <script is:inline>
-      const FORM_ENDPOINT = "{FORM_ENDPOINT}";
+    <main id="top">
+      <div class="container">
+        <section class="hero">
+          <div class="kicker">
+            <span class="dot"></span>
+            <span data-t="kicker">Holding Company + Venture Studio</span>
+          </div>
 
-      const copy = {
-        en: {
-          nav_focus:"Focus", nav_portfolio:"Portfolio", nav_news:"News", nav_careers:"Careers",
-          kicker:"Holding Company + Venture Studio",
-          hero_sub:"RAPDM operates as a holding company and venture studio, building and investing in ventures with clear governance, disciplined capital allocation and pragmatic operations.",
-          hero_cta_primary:"View portfolio",
-          hero_cta_secondary:"Read news",
-          hero_cta_contact:"Contact",
+          <h1 data-t="hero_title">Building ventures with real purpose</h1>
 
-          focus_h:"Focus", focus_p:"What we do",
-          focus_1_t:"Holding", focus_1_d:"Governance, capital allocation, reporting and long-term value creation.",
-          focus_2_t:"Venture Studio", focus_2_d:"Validation, product and operations with an execution-first mindset.",
-          focus_3_t:"Investment", focus_3_d:"Selective deployments where fundamentals and distribution are strong.",
+          <p class="sub" data-t="hero_sub">
+            RAPDM is a Portugal-based holding company founded in 2019 by João Medeiros, focused on building and scaling high-potential ventures in Retail and Technology. The group partners with ambitious founders to create enduring businesses and expand a selective, high-quality partnership ecosystem.
+          </p>
 
-          port_h:"Portfolio", port_p:"Holdings and ventures",
-          audax_d:"E-commerce brands.",
-          scaler_d:"SaaS and analytics.",
-          chift_d:"Product and execution.",
-          open:"Open",
+          <div class="hero-actions">
+            <a class="btn primary" href="#portfolio" data-t="hero_cta_primary">View portfolio</a>
+            <a class="btn" href="#contact" data-t="hero_cta_contact">Contact</a>
+          </div>
+        </section>
 
-          news_h:"News", news_p:"Updates and publications",
-          news_1_t:"Blog-style posts", news_1_d:"News is published as Markdown. Add a file and deploy.",
-          news_2_t:"View all", news_2_d:"Full list and individual pages at /news.",
-          news_btn:"Open /news",
+        <section id="focus">
+          <div class="section-head">
+            <h2 data-t="focus_h">Focus</h2>
+            <p data-t="focus_p">What we do</p>
+          </div>
 
-          car_h:"Careers", car_p:"Open roles",
-          role_1_t:"Ops / Systems Associate", role_1_d:"Automation, reporting, process design and internal tooling.",
-          role_2_t:"Analyst (Investments)", role_2_d:"Screening, research, memos, diligence and follow-up.",
-          role_3_t:"Growth (Consumer)", role_3_d:"Performance testing, measurement and efficient allocation.",
-          role_4_t:"Product / Data", role_4_d:"Product execution, data instrumentation and decision support.",
+          <div class="grid grid-3">
+            <div class="card">
+              <h3 data-t="focus_1_t">Holding</h3>
+              <p data-t="focus_1_d">Governance, capital allocation, reporting and long-term value creation.</p>
+            </div>
+            <div class="card">
+              <h3 data-t="focus_2_t">Venture Studio</h3>
+              <p data-t="focus_2_d">Validation, product and operations with an execution-first mindset.</p>
+            </div>
+            <div class="card">
+              <h3 data-t="focus_3_t">Investment</h3>
+              <p data-t="focus_3_d">Selective deployments where fundamentals and distribution are strong.</p>
+            </div>
+          </div>
+        </section>
 
-          ct_h:"Contact", ct_p:"One form for all requests",
-          f_name:"Name", f_email:"Email", f_type:"Category", f_select:"Select",
-          f_link:"Link (optional)", f_company:"Company (optional)", f_role:"Role (if Careers)",
-          f_msg:"Message", f_send:"Send",
+        <section id="portfolio">
+          <div class="section-head">
+            <h2 data-t="port_h">Portfolio</h2>
+            <p data-t="port_p">Holdings and ventures</p>
+          </div>
 
-          cookieText:"We use cookies to improve experience and measure performance. You can accept or reject non-essential cookies.",
-          cookieReject:"Reject", cookieAccept:"Accept",
+          <div class="grid grid-3">
+            <div class="card portfolio-card">
+              <a href="https://www.linkedin.com/company/79813925/" target="_blank" rel="noreferrer">
+                <div>
+                  <h3>AUDAX</h3>
+                  <p data-t="audax_d">E-commerce brands.</p>
+                  <div class="pill" data-t="open">Open</div>
+                </div>
+                <div class="arrow">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M7 17L17 7M10 7h7v7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </a>
+            </div>
 
-          sending:"Sending...", sent:"Sent.", failed:"Failed. Try again.", formNotConfigured:"Form endpoint not configured."
-        },
+            <div class="card portfolio-card">
+              <a href="https://scalerpath.com" target="_blank" rel="noreferrer">
+                <div>
+                  <h3>ScalerPath</h3>
+                  <p data-t="scaler_d">SaaS and analytics.</p>
+                  <div class="pill" data-t="open">Open</div>
+                </div>
+                <div class="arrow">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M7 17L17 7M10 7h7v7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </a>
+            </div>
 
-        pt: {
-          nav_focus:"Focus", nav_portfolio:"Portfolio", nav_news:"News", nav_careers:"Careers",
-          kicker:"Holding Company + Venture Studio",
-          hero_sub:"A RAPDM atua como holding e venture studio, construindo e investindo em ventures com governação clara, alocação disciplinada de capital e operações pragmáticas.",
-          hero_cta_primary:"Ver portfolio",
-          hero_cta_secondary:"Ler news",
-          hero_cta_contact:"Contacto",
+            <div class="card portfolio-card">
+              <a href="https://chift.io" target="_blank" rel="noreferrer">
+                <div>
+                  <h3>Chift</h3>
+                  <p data-t="chift_d">Product and execution.</p>
+                  <div class="pill" data-t="open">Open</div>
+                </div>
+                <div class="arrow">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M7 17L17 7M10 7h7v7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </a>
+            </div>
+          </div>
+        </section>
 
-          focus_h:"Focus", focus_p:"O que fazemos",
-          focus_1_t:"Holding", focus_1_d:"Governação, alocação de capital, reporting e criação de valor no longo prazo.",
-          focus_2_t:"Venture Studio", focus_2_d:"Validação, produto e operações com mentalidade de execução.",
-          focus_3_t:"Investimento", focus_3_d:"Deploy seletivo quando os fundamentos e a distribuição são fortes.",
+        <section id="news">
+          <div class="section-head">
+            <h2 data-t="news_h">News</h2>
+            <p data-t="news_p">Updates and publications</p>
+          </div>
 
-          port_h:"Portfolio", port_p:"Holdings e ventures",
-          audax_d:"E-commerce brands.",
-          scaler_d:"SaaS e analytics.",
-          chift_d:"Produto e execução.",
-          open:"Abrir",
+          <div class="surface">
+            <div class="grid grid-2">
+              <div class="card">
+                <h3 data-t="news_1_t">Blog-style posts</h3>
+                <p data-t="news_1_d">News is published as Markdown. Add a file and deploy.</p>
+              </div>
+              <div class="card">
+                <h3 data-t="news_2_t">View all</h3>
+                <p data-t="news_2_d">Full list and individual pages at /news.</p>
+                <div style="margin-top: 16px;">
+                  <a class="btn" href="/news" data-t="news_btn">Open /news</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
-          news_h:"News", news_p:"Atualizações e publicações",
-          news_1_t:"Posts tipo blog", news_1_d:"News é publicado em Markdown. Adicionas um ficheiro e faz deploy.",
-          news_2_t:"Ver tudo", news_2_d:"Lista completa e páginas individuais em /news.",
-          news_btn:"Abrir /news",
+        <section id="careers">
+          <div class="section-head">
+            <h2 data-t="car_h">Careers</h2>
+            <p data-t="car_p">Open roles</p>
+          </div>
 
-          car_h:"Careers", car_p:"Posições",
-          role_1_t:"Ops / Systems Associate", role_1_d:"Automação, reporting, desenho de processos e tooling interno.",
-          role_2_t:"Analyst (Investments)", role_2_d:"Screening, research, memos, diligence e acompanhamento.",
-          role_3_t:"Growth (Consumer)", role_3_d:"Testes, medição e alocação eficiente.",
-          role_4_t:"Product / Data", role_4_d:"Execução de produto, instrumentação de dados e suporte à decisão.",
+          <div class="grid grid-2">
+            <div class="card">
+              <h3 data-t="role_1_t">Ops / Systems Associate</h3>
+              <p data-t="role_1_d">Automation, reporting, process design and internal tooling.</p>
+            </div>
+            <div class="card">
+              <h3 data-t="role_2_t">Analyst (Investments)</h3>
+              <p data-t="role_2_d">Screening, research, memos, diligence and follow-up.</p>
+            </div>
+            <div class="card">
+              <h3 data-t="role_3_t">Growth (Consumer)</h3>
+              <p data-t="role_3_d">Performance testing, measurement and efficient allocation.</p>
+            </div>
+            <div class="card">
+              <h3 data-t="role_4_t">Product / Data</h3>
+              <p data-t="role_4_d">Product execution, data instrumentation and decision support.</p>
+            </div>
+          </div>
+        </section>
 
-          ct_h:"Contacto", ct_p:"Um formulário para todos os pedidos",
-          f_name:"Nome", f_email:"Email", f_type:"Tipo", f_select:"Selecionar",
-          f_link:"Link (opcional)", f_company:"Empresa (opcional)", f_role:"Posição (se Careers)",
-          f_msg:"Mensagem", f_send:"Enviar",
+        <section id="contact">
+          <div class="section-head">
+            <h2 data-t="ct_h">Contact</h2>
+            <p data-t="ct_p">Contcat Form</p>
+          </div>
 
-          cookieText:"Usamos cookies para melhorar a experiência e medir desempenho. Pode aceitar ou recusar cookies não essenciais.",
-          cookieReject:"Recusar", cookieAccept:"Aceitar",
+          <div class="surface">
+            <form id="contactForm">
+              <div class="row2">
+                <div>
+                  <label for="name" data-t="f_name">Name</label>
+                  <input id="name" name="name" type="text" required placeholder="Full name" />
+                </div>
+                <div>
+                  <label for="email" data-t="f_email">Email</label>
+                  <input id="email" name="email" type="email" required placeholder="name@company.com" />
+                </div>
+              </div>
 
-          sending:"A enviar...", sent:"Enviado.", failed:"Falhou. Tenta novamente.", formNotConfigured:"Form endpoint não configurado."
-        }
-      };
+              <div class="row2">
+                <div>
+                  <label for="category" data-t="f_type">Category</label>
+                  <select id="category" name="category" required>
+                    <option value="" selected disabled data-t="f_select">Select</option>
+                    <option value="Investment">Investment</option>
+                    <option value="Partnership">Partnership</option>
+                    <option value="Careers">Careers</option>
+                    <option value="Press">Press</option>
+                    <option value="General">General</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="link" data-t="f_link">Link (optional)</label>
+                  <input id="link" name="link" type="url" placeholder="Deck, LinkedIn, website" />
+                </div>
+              </div>
 
-      const langButtons = document.querySelectorAll("[data-lang]");
-      const nodes = Array.from(document.querySelectorAll("[data-t]"));
+              <div class="row2">
+                <div>
+                  <label for="company" data-t="f_company">Company (optional)</label>
+                  <input id="company" name="company" type="text" placeholder="Company / project" />
+                </div>
+                <div>
+                  <label for="role" data-t="f_role">Role (if Careers)</label>
+                  <input id="role" name="role" type="text" placeholder="e.g., Ops / Systems Associate" />
+                </div>
+              </div>
 
-      const applyLang = (lang) => {
-        const dict = copy[lang] || copy.en;
-        document.documentElement.lang = (lang === "pt") ? "pt-PT" : "en";
-        try { localStorage.setItem("rapdm_lang", lang); } catch {}
+              <div>
+                <label for="message" data-t="f_msg">Message</label>
+                <textarea id="message" name="message" required placeholder="Write your message here."></textarea>
+              </div>
 
-        langButtons.forEach((b) => b.setAttribute("aria-pressed", (b.dataset.lang === lang) ? "true" : "false"));
+              <div class="form-row">
+                <button class="btn primary" type="submit" data-t="f_send">Send</button>
+                <span id="formStatus" class="status"></span>
+              </div>
+            </form>
 
-        nodes.forEach((el) => {
-          const key = el.getAttribute("data-t");
-          if (key && dict[key] != null) el.textContent = dict[key];
-        });
-
-        const cookieText = document.getElementById("cookieText");
-        const cookieReject = document.getElementById("cookieReject");
-        const cookieAccept = document.getElementById("cookieAccept");
-        if (cookieText) cookieText.textContent = dict.cookieText;
-        if (cookieReject) cookieReject.textContent = dict.cookieReject;
-        if (cookieAccept) cookieAccept.textContent = dict.cookieAccept;
-      };
-
-      const saved = (() => { try { return localStorage.getItem("rapdm_lang"); } catch { return null; } })();
-      applyLang(saved || "en");
-
-      langButtons.forEach((b) => b.addEventListener("click", () => applyLang(b.dataset.lang)));
-
-      const form = document.getElementById("contactForm");
-      const status = document.getElementById("formStatus");
-
-      const getLang = () => {
-        const pressed = Array.from(langButtons).find(b => b.getAttribute("aria-pressed") === "true");
-        return pressed?.dataset.lang || "en";
-      };
-
-      const postForm = async (payload) => {
-        const res = await fetch(FORM_ENDPOINT, {
-          method:"POST",
-          headers:{ "Accept":"application/json", "Content-Type":"application/json" },
-          body: JSON.stringify(payload)
-        });
-        if (!res.ok) throw new Error("Request failed");
-      };
-
-      if (form && status) {
-        form.addEventListener("submit", async (e) => {
-          e.preventDefault();
-
-          const lang = getLang();
-          const dict = copy[lang] || copy.en;
-
-          if (!FORM_ENDPOINT || FORM_ENDPOINT.includes("REPLACE_ME")) {
-            status.className = "status err";
-            status.textContent = dict.formNotConfigured;
-            return;
-          }
-
-          status.className = "status";
-          status.textContent = dict.sending;
-
-          const payload = {
-            source:"rapdm.co",
-            page: window.location.href,
-            name: document.getElementById("name")?.value || "",
-            email: document.getElementById("email")?.value || "",
-            category: document.getElementById("category")?.value || "",
-            link: document.getElementById("link")?.value || "",
-            company: document.getElementById("company")?.value || "",
-            role: document.getElementById("role")?.value || "",
-            message: document.getElementById("message")?.value || "",
-            lang
-          };
-
-          try {
-            await postForm(payload);
-            status.className = "status ok";
-            status.textContent = dict.sent;
-            form.reset();
-          } catch {
-            status.className = "status err";
-            status.textContent = dict.failed;
-          }
-        });
-      }
-
-      const yEl = document.getElementById("year");
-      if (yEl) yEl.textContent = String(new Date().getFullYear());
-
-      const banner = document.getElementById("cookieBanner");
-      const accept = document.getElementById("cookieAccept");
-      const reject = document.getElementById("cookieReject");
-      const key = "rapdm_cookie_consent";
-
-      const existing = (() => { try { return localStorage.getItem(key); } catch { return null; } })();
-      if (!existing && banner) banner.style.display = "block";
-
-      const setConsent = (v) => {
-        try { localStorage.setItem(key, v); } catch {}
-        if (banner) banner.style.display = "none";
-      };
-
-      if (accept) accept.addEventListener("click", () => setConsent("accepted"));
-      if (reject) reject.addEventListener("click", () => setConsent("rejected"));
-    </script>
-  </body>
-</html>
+            <footer>
+              <div class="foot-row">
+                <span>© <span class="mono" id="year"></span> RAPDM. All rights reserved.</span
