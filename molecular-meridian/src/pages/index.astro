@@ -1,22 +1,15 @@
 ---
 const SITE_TITLE = "RAPDM | Holding Company + Venture Studio";
-const FORM_ENDPOINT = "https://formspree.io/f/REPLACE_ME";
-const MEETING_MAIL = "mailto:joao@rapdm.co?subject=RAPDM%20-%20Pedido%20de%20reuni%C3%A3o&body=Ol%C3%A1%20Jo%C3%A3o%2C%0A%0AQueria%20marcar%20uma%20reuni%C3%A3o.%20Sugiro%3A%0A-%20Tema%3A%0A-%20Contexto%3A%0A-%20Disponibilidade%3A%0A%0AObrigado.";
-
-const portfolio = [
-  { name: "AUDAX", description_pt: "E-commerce brands.", description_en: "E-commerce brands.", href: "https://www.linkedin.com/company/79813925/" },
-  { name: "ScalerPath", description_pt: "SaaS e analytics.", description_en: "SaaS and analytics.", href: "https://scalerpath.com" },
-  { name: "Chift", description_pt: "Produto e execução.", description_en: "Product and execution.", href: "https://chift.io" },
-];
+const FORM_ENDPOINT = "https://formspree.io/f/REPLACE_ME"; // troca pelo teu endpoint
 ---
 
 <!doctype html>
-<html lang="pt-PT">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="RAPDM. Holding Company + Venture Studio." />
-    <meta name="theme-color" content="#0B1220" />
+    <meta name="theme-color" content="#FFFFFF" />
 
     <title>{SITE_TITLE}</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -24,442 +17,379 @@ const portfolio = [
 
     <style>
       :root{
-        --bg: #0b0f16;
-        --bg2: #0a0d13;
-        --panel: rgba(255,255,255,.06);
-        --panel2: rgba(255,255,255,.04);
-        --line: rgba(255,255,255,.10);
+        --bg:#ffffff;
+        --bg2:#f6f8fb;
+        --panel:rgba(255,255,255,.86);
+        --line:rgba(15,23,42,.12);
+        --line2:rgba(15,23,42,.08);
 
-        --ink: rgba(255,255,255,.92);
-        --muted: rgba(255,255,255,.68);
-        --muted2: rgba(255,255,255,.52);
+        --ink:rgba(15,23,42,.92);
+        --muted:rgba(15,23,42,.66);
+        --muted2:rgba(15,23,42,.52);
 
-        --accent: #2b6cff;
-        --accent2: #6aa7ff;
+        --accent:#1b4dff;
+        --accent2:#2f7dff;
 
-        --shadow: 0 18px 50px rgba(0,0,0,.40);
-        --r: 14px;
-        --r2: 18px;
-        --max: 1160px;
+        --shadow:0 18px 50px rgba(2,8,23,.10);
+        --r2:18px;
+        --max:1160px;
 
-        --ease: cubic-bezier(.2,.8,.2,1);
+        --ease:cubic-bezier(.2,.8,.2,1);
+        --headerH:78px;
       }
 
-      *{ box-sizing:border-box; }
-      html,body{ height:100%; }
-      html{ scroll-behavior:smooth; }
+      *{box-sizing:border-box;}
+      html,body{height:100%;}
+      html{scroll-behavior:smooth;}
       body{
         margin:0;
-        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial;
-        color: var(--ink);
-        background: radial-gradient(1200px 900px at 50% -10%, rgba(43,108,255,.20), transparent 55%),
-                    radial-gradient(1100px 800px at 10% 30%, rgba(255,255,255,.06), transparent 60%),
-                    linear-gradient(180deg, var(--bg), var(--bg2));
+        font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial;
+        color:var(--ink);
+        background:linear-gradient(180deg,var(--bg),var(--bg2));
         overflow-x:hidden;
       }
 
-      /* Melhor scroll: menos animações pesadas e menos blur */
+      /* Subtle animated top background */
       .bg{
-        position: fixed;
-        inset: 0;
+        position:fixed;
+        inset:0;
         pointer-events:none;
-        z-index: 0;
+        z-index:0;
       }
-      .bg .orbs{
+      .bg::before{
+        content:"";
         position:absolute;
-        inset:-10%;
+        left:0; right:0; top:0;
+        height:520px;
         background:
-          radial-gradient(700px 520px at 22% 18%, rgba(43,108,255,.18), transparent 60%),
-          radial-gradient(680px 520px at 78% 20%, rgba(106,167,255,.10), transparent 60%),
-          radial-gradient(860px 680px at 60% 70%, rgba(255,255,255,.06), transparent 62%);
-        animation: drift 14s var(--ease) infinite;
-        will-change: transform;
+          radial-gradient(900px 520px at 20% 10%, rgba(27,77,255,.14), transparent 60%),
+          radial-gradient(900px 520px at 80% 14%, rgba(47,125,255,.10), transparent 60%),
+          linear-gradient(180deg, rgba(2,6,23,.04), transparent 70%);
+        filter:saturate(1.05);
+        animation:hueFloat 14s var(--ease) infinite;
+        will-change:filter,transform;
       }
-      .bg .grid{
+      .bg::after{
+        content:"";
         position:absolute;
         inset:0;
         background-image:
-          linear-gradient(to right, rgba(255,255,255,.06) 1px, transparent 1px),
-          linear-gradient(to bottom, rgba(255,255,255,.06) 1px, transparent 1px);
-        background-size: 84px 84px;
-        opacity:.30;
-        mask-image: radial-gradient(60% 50% at 50% 18%, rgba(0,0,0,1), transparent 70%);
+          linear-gradient(to right, rgba(2,6,23,.06) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(2,6,23,.06) 1px, transparent 1px);
+        background-size:92px 92px;
+        opacity:.18;
+        mask-image: radial-gradient(60% 40% at 50% 0%, rgba(0,0,0,1), transparent 70%);
       }
-      @keyframes drift{
-        0%{ transform: translate3d(0,0,0) scale(1); filter:hue-rotate(0deg); }
-        50%{ transform: translate3d(1.6%, -1.0%, 0) scale(1.02); filter:hue-rotate(10deg); }
-        100%{ transform: translate3d(0,0,0) scale(1); filter:hue-rotate(0deg); }
+      @keyframes hueFloat{
+        0%{transform:translate3d(0,0,0) scale(1); filter:hue-rotate(0deg);}
+        50%{transform:translate3d(.8%,-.6%,0) scale(1.02); filter:hue-rotate(10deg);}
+        100%{transform:translate3d(0,0,0) scale(1); filter:hue-rotate(0deg);}
       }
 
-      .wrap{ position:relative; z-index:1; min-height:100%; }
-      .container{ width: min(var(--max), calc(100% - 48px)); margin: 0 auto; }
-      @media (max-width: 640px){ .container{ width: calc(100% - 28px); } }
+      .wrap{position:relative; z-index:1; min-height:100%;}
+      .container{width:min(var(--max), calc(100% - 48px)); margin:0 auto;}
+      @media (max-width:640px){ .container{width:calc(100% - 28px);} }
 
       header{
-        position: sticky;
-        top: 0;
-        z-index: 20;
-        background: rgba(11,15,22,.78);
-        backdrop-filter: blur(12px);
-        border-bottom: 1px solid rgba(255,255,255,.08);
+        position:sticky;
+        top:0;
+        z-index:50;
+        background:rgba(255,255,255,.72);
+        backdrop-filter:blur(12px);
+        border-bottom:1px solid var(--line2);
       }
+
       .nav{
+        height:var(--headerH);
         display:flex;
         align-items:center;
         justify-content:space-between;
-        height:78px;
-        gap: 14px;
+        gap:14px;
       }
 
       .brand{
         display:flex;
         align-items:center;
-        gap: 12px;
         text-decoration:none;
-        color: inherit;
+        color:inherit;
+        gap:12px;
+        min-width:160px;
       }
       .brand img{
-        height: 44px;
+        height:52px; /* maior */
         width:auto;
         display:block;
       }
 
-      .navLinks{
+      nav{
         display:flex;
         align-items:center;
-        gap: 12px;
+        gap:10px;
+        flex:1;
+        justify-content:center;
       }
-      .navLinks a{
+      nav a{
         text-decoration:none;
-        color: rgba(255,255,255,.72);
-        font-size: 13px;
-        padding: 10px 10px;
-        border-radius: 999px;
-        transition: background .2s var(--ease), color .2s var(--ease);
+        color:rgba(15,23,42,.74);
+        font-size:13px;
+        padding:10px 10px;
+        border-radius:999px;
+        transition:background .2s var(--ease), color .2s var(--ease);
       }
-      .navLinks a:hover{ background: rgba(255,255,255,.06); color: rgba(255,255,255,.92); }
+      nav a:hover{
+        background:rgba(2,6,23,.05);
+        color:rgba(15,23,42,.92);
+      }
 
       .right{
         display:flex;
         align-items:center;
-        gap: 10px;
+        gap:10px;
+        justify-content:flex-end;
+        min-width:160px;
       }
 
       .lang{
         display:flex;
-        border: 1px solid rgba(255,255,255,.14);
-        background: rgba(255,255,255,.05);
-        border-radius: 999px;
+        border:1px solid var(--line);
+        background:rgba(255,255,255,.75);
+        border-radius:999px;
         overflow:hidden;
       }
       .lang button{
         border:0;
-        background: transparent;
-        color: rgba(255,255,255,.70);
+        background:transparent;
+        color:rgba(15,23,42,.70);
         cursor:pointer;
-        padding: 10px 12px;
-        font-size: 12px;
-        transition: background .2s var(--ease), color .2s var(--ease);
+        padding:10px 12px;
+        font-size:12px;
+        transition:background .2s var(--ease), color .2s var(--ease);
       }
       .lang button[aria-pressed="true"]{
-        background: rgba(255,255,255,.08);
-        color: rgba(255,255,255,.92);
-        font-weight: 700;
+        background:rgba(2,6,23,.06);
+        color:rgba(15,23,42,.92);
+        font-weight:700;
       }
 
-      .btn{
-        display:inline-flex;
-        align-items:center;
-        gap: 10px;
-        border-radius: 999px;
-        padding: 12px 14px;
-        font-size: 13px;
-        text-decoration:none;
-        cursor:pointer;
-        border: 1px solid rgba(255,255,255,.14);
-        background: rgba(255,255,255,.06);
-        color: rgba(255,255,255,.88);
-        transition: transform .2s var(--ease), background .2s var(--ease), border-color .2s var(--ease);
-        white-space:nowrap;
-      }
-      .btn:hover{ transform: translateY(-1px); border-color: rgba(43,108,255,.28); }
-      .btn.primary{
-        background: linear-gradient(180deg, rgba(43,108,255,.92), rgba(43,108,255,.76));
-        border-color: rgba(43,108,255,.35);
-        color: rgba(255,255,255,.95);
-      }
+      @media (max-width:760px){ nav{display:none;} }
 
-      @media (max-width: 980px){
-        .navLinks{ display:none; }
-      }
+      main{padding:36px 0 92px;}
+      section{padding:34px 0;}
+      section[id]{scroll-margin-top:calc(var(--headerH) + 16px);}
 
-      main{ padding: 28px 0 96px; }
-      section{ padding: 34px 0; }
-
-      /* Corrigir scroll para âncoras com header sticky */
-      section[id]{ scroll-margin-top: 92px; }
-
-      .hero{
-        padding: 46px 0 24px;
-        display:grid;
-        gap: 18px;
-        align-items:start;
-      }
-      .heroTop{
-        display:flex;
-        flex-direction:column;
-        gap: 14px;
-        max-width: 860px;
-      }
+      /* Hero */
+      .hero{padding:40px 0 20px; display:grid; gap:16px;}
       .kicker{
         display:inline-flex;
         align-items:center;
-        gap: 10px;
-        padding: 9px 12px;
-        border-radius: 999px;
-        border: 1px solid rgba(255,255,255,.12);
-        background: rgba(255,255,255,.05);
-        color: rgba(255,255,255,.74);
-        font-size: 12px;
-        width: fit-content;
+        gap:10px;
+        padding:10px 12px;
+        border-radius:999px;
+        border:1px solid var(--line);
+        background:rgba(255,255,255,.70);
+        color:rgba(15,23,42,.72);
+        font-size:12px;
+        width:fit-content;
+        box-shadow:0 10px 30px rgba(2,8,23,.05);
       }
       .dot{
-        width: 8px; height: 8px; border-radius: 999px;
-        background: rgba(43,108,255,.95);
-        box-shadow: 0 12px 24px rgba(43,108,255,.18);
-      }
-      h1{
-        margin:0;
-        font-size: clamp(38px, 5.2vw, 62px);
-        line-height: 1.04;
-        letter-spacing: -0.03em;
+        width:8px;height:8px;border-radius:999px;
+        background:var(--accent);
+        box-shadow:0 10px 18px rgba(27,77,255,.18);
       }
       .sub{
-        margin: 0;
-        color: var(--muted);
-        font-size: 16px;
-        line-height: 1.62;
+        margin:0;
+        color:var(--muted);
+        font-size:15px;
+        line-height:1.68;
+        max-width:920px;
       }
+
       .heroActions{
         display:flex;
-        gap: 10px;
+        gap:10px;
         flex-wrap:wrap;
-        margin-top: 8px;
+        margin-top:10px;
+      }
+      .btn{
+        display:inline-flex;
+        align-items:center;
+        justify-content:center;
+        gap:10px;
+        border-radius:999px;
+        padding:12px 14px;
+        font-size:13px;
+        text-decoration:none;
+        cursor:pointer;
+        border:1px solid var(--line);
+        background:rgba(255,255,255,.78);
+        color:rgba(15,23,42,.90);
+        transition:transform .2s var(--ease), border-color .2s var(--ease), box-shadow .2s var(--ease);
+        white-space:nowrap;
+        box-shadow:0 12px 34px rgba(2,8,23,.06);
+      }
+      .btn:hover{
+        transform:translateY(-1px);
+        border-color:rgba(27,77,255,.28);
+        box-shadow:0 16px 44px rgba(2,8,23,.09);
+      }
+      .btn.primary{
+        background:linear-gradient(180deg, rgba(27,77,255,.95), rgba(47,125,255,.86));
+        border-color:rgba(27,77,255,.28);
+        color:#fff;
       }
 
-      .surface{
-        border: 1px solid rgba(255,255,255,.10);
-        background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.04));
-        border-radius: var(--r2);
-        box-shadow: var(--shadow);
-      }
-
-      .grid3{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-      .grid2{ display:grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
-      @media (max-width: 980px){
-        .grid3{ grid-template-columns: 1fr; }
-        .grid2{ grid-template-columns: 1fr; }
-      }
-
-      .sectionTitle{
+      /* Sections */
+      .sectionHead{
         display:flex;
         align-items:baseline;
         justify-content:space-between;
-        gap: 14px;
-        margin-bottom: 12px;
+        gap:14px;
+        margin-bottom:14px;
       }
-      .sectionTitle h2{
+      .sectionHead h2{
         margin:0;
-        font-size: 16px;
-        letter-spacing: 0.02em;
-        text-transform: uppercase;
-        color: rgba(255,255,255,.72);
+        font-size:14px;
+        letter-spacing:.10em;
+        text-transform:uppercase;
+        color:rgba(15,23,42,.64);
       }
-      .sectionTitle p{
+      .sectionHead p{
         margin:0;
-        font-size: 13px;
-        color: rgba(255,255,255,.54);
+        font-size:13px;
+        color:var(--muted2);
+      }
+
+      .surface{
+        border:1px solid var(--line2);
+        background:rgba(255,255,255,.72);
+        border-radius:var(--r2);
+        box-shadow:var(--shadow);
+      }
+
+      .grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
+      .grid2{display:grid; grid-template-columns:repeat(2,1fr); gap:14px;}
+      @media (max-width:980px){
+        .grid3{grid-template-columns:1fr;}
+        .grid2{grid-template-columns:1fr;}
       }
 
       .card{
-        padding: 18px;
-        border-radius: var(--r2);
-        border: 1px solid rgba(255,255,255,.10);
-        background: rgba(255,255,255,.05);
-        transition: transform .2s var(--ease), border-color .2s var(--ease);
+        padding:18px;
+        border-radius:var(--r2);
+        border:1px solid var(--line2);
+        background:rgba(255,255,255,.80);
+        transition:transform .2s var(--ease), border-color .2s var(--ease);
       }
-      .card:hover{ transform: translateY(-2px); border-color: rgba(43,108,255,.28); }
-
-      .card h3{ margin: 0 0 8px; font-size: 15px; }
-      .card p{ margin: 0; color: rgba(255,255,255,.66); font-size: 13px; line-height: 1.55; }
-
-      .metricRow{
-        display:flex;
-        gap: 14px;
-        flex-wrap:wrap;
-        margin-top: 14px;
-      }
-      .metric{
-        padding: 12px 14px;
-        border-radius: 14px;
-        border: 1px solid rgba(255,255,255,.10);
-        background: rgba(255,255,255,.04);
-        min-width: 180px;
-      }
-      .metric .k{ font-size: 11px; color: rgba(255,255,255,.56); text-transform: uppercase; letter-spacing: 0.06em; }
-      .metric .v{ margin-top: 6px; font-size: 13px; color: rgba(255,255,255,.84); }
+      .card:hover{transform:translateY(-2px); border-color:rgba(27,77,255,.20);}
+      .card h3{margin:0 0 8px; font-size:15px; color:rgba(15,23,42,.92);}
+      .card p{margin:0; color:var(--muted); font-size:13px; line-height:1.55;}
 
       .portfolioCard a{
         display:flex;
         align-items:center;
         justify-content:space-between;
-        gap: 14px;
-        color: inherit;
+        gap:14px;
+        color:inherit;
         text-decoration:none;
       }
-      .portfolioCard .name{
-        display:flex;
-        flex-direction:column;
-        gap: 6px;
-      }
       .pill{
-        font-size: 11px;
-        padding: 6px 10px;
-        border-radius: 999px;
-        border: 1px solid rgba(255,255,255,.12);
-        background: rgba(255,255,255,.04);
-        color: rgba(255,255,255,.66);
-        width: fit-content;
+        font-size:11px;
+        padding:6px 10px;
+        border-radius:999px;
+        border:1px solid var(--line);
+        background:rgba(2,6,23,.03);
+        color:rgba(15,23,42,.70);
+        width:fit-content;
       }
       .arrow{
-        width: 34px; height: 34px;
-        border-radius: 999px;
-        border: 1px solid rgba(255,255,255,.12);
-        background: rgba(255,255,255,.04);
+        width:34px;height:34px;
+        border-radius:999px;
+        border:1px solid var(--line);
+        background:rgba(2,6,23,.03);
         display:grid;
         place-items:center;
+        flex:0 0 auto;
       }
-      .arrow svg{ width: 16px; height: 16px; }
+      .arrow svg{width:16px;height:16px;color:rgba(15,23,42,.82);}
 
-      form{ display:grid; gap: 10px; }
-      .row2{ display:grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-      @media (max-width: 720px){ .row2{ grid-template-columns: 1fr; } }
+      /* Form */
+      form{display:grid; gap:10px;}
+      .row2{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
+      @media (max-width:720px){ .row2{grid-template-columns:1fr;} }
 
-      label{
-        font-size: 12px;
-        color: rgba(255,255,255,.62);
-        display:block;
-        margin: 0 0 6px;
-      }
+      label{font-size:12px; color:rgba(15,23,42,.70); display:block; margin:0 0 6px;}
       input, textarea, select{
-        width: 100%;
-        border-radius: 14px;
-        border: 1px solid rgba(255,255,255,.14);
-        background: rgba(0,0,0,.18);
-        padding: 12px 12px;
-        font-size: 13px;
-        color: rgba(255,255,255,.90);
+        width:100%;
+        border-radius:14px;
+        border:1px solid var(--line);
+        background:rgba(255,255,255,.92);
+        padding:12px 12px;
+        font-size:13px;
+        color:rgba(15,23,42,.90);
         outline:none;
-        transition: border-color .2s var(--ease), box-shadow .2s var(--ease);
+        transition:border-color .2s var(--ease), box-shadow .2s var(--ease);
       }
-      textarea{ min-height: 140px; resize: vertical; }
+      textarea{min-height:140px; resize:vertical;}
       input:focus, textarea:focus, select:focus{
-        border-color: rgba(43,108,255,.45);
-        box-shadow: 0 0 0 4px rgba(43,108,255,.14);
+        border-color:rgba(27,77,255,.34);
+        box-shadow:0 0 0 4px rgba(27,77,255,.10);
       }
 
-      .formRow{
-        display:flex;
-        align-items:center;
-        justify-content:space-between;
-        gap: 10px;
-        flex-wrap:wrap;
-        margin-top: 6px;
-      }
-      .status{
-        font-size: 12px;
-        color: rgba(255,255,255,.62);
-      }
-      .status.ok{ color: rgba(255,255,255,.80); }
-      .status.err{ color: rgba(255,90,120,.90); }
+      .formRow{display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap; margin-top:6px;}
+      .status{font-size:12px; color:rgba(15,23,42,.64);}
+      .status.ok{color:rgba(15,23,42,.82);}
+      .status.err{color:rgba(210,30,70,.90);}
 
-      footer{
-        padding: 22px 0 0;
-        color: rgba(255,255,255,.52);
-        font-size: 12px;
-      }
+      footer{padding:26px 0 0; color:rgba(15,23,42,.54); font-size:12px;}
       .footRow{
         display:flex;
         justify-content:space-between;
         align-items:center;
-        gap: 12px;
+        gap:12px;
         flex-wrap:wrap;
-        border-top: 1px solid rgba(255,255,255,.08);
-        padding-top: 14px;
-        margin-top: 18px;
+        border-top:1px solid var(--line2);
+        padding-top:14px;
+        margin-top:18px;
       }
-      .mono{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+      .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;}
 
-      /* Cookies banner (estilo institucional) */
-      .cookie{
-        position: fixed;
-        left: 18px;
-        right: 18px;
-        bottom: 18px;
-        z-index: 50;
-        display:none;
-      }
+      /* Cookies banner */
+      .cookie{position:fixed; left:18px; right:18px; bottom:18px; z-index:60; display:none;}
       .cookieInner{
-        max-width: 980px;
-        margin: 0 auto;
-        padding: 14px 14px;
-        border-radius: 16px;
-        border: 1px solid rgba(255,255,255,.14);
-        background: rgba(10,13,19,.92);
-        backdrop-filter: blur(12px);
-        box-shadow: 0 18px 60px rgba(0,0,0,.45);
+        max-width:980px;
+        margin:0 auto;
+        padding:14px 14px;
+        border-radius:16px;
+        border:1px solid var(--line);
+        background:rgba(255,255,255,.86);
+        backdrop-filter:blur(12px);
+        box-shadow:0 18px 60px rgba(2,8,23,.14);
         display:flex;
         align-items:center;
         justify-content:space-between;
-        gap: 12px;
+        gap:12px;
         flex-wrap:wrap;
       }
-      .cookieText{
-        color: rgba(255,255,255,.72);
-        font-size: 12px;
-        line-height: 1.45;
-        max-width: 680px;
-      }
-      .cookieActions{
-        display:flex;
-        gap: 10px;
-        flex-wrap:wrap;
-      }
+      .cookieText{color:rgba(15,23,42,.70); font-size:12px; line-height:1.45; max-width:680px;}
+      .cookieActions{display:flex; gap:10px; flex-wrap:wrap;}
       .cookieBtn{
-        border-radius: 999px;
-        border: 1px solid rgba(255,255,255,.14);
-        background: rgba(255,255,255,.06);
-        color: rgba(255,255,255,.86);
-        padding: 10px 12px;
-        font-size: 12px;
+        border-radius:999px;
+        border:1px solid var(--line);
+        background:rgba(255,255,255,.92);
+        color:rgba(15,23,42,.86);
+        padding:10px 12px;
+        font-size:12px;
         cursor:pointer;
-        transition: transform .2s var(--ease), border-color .2s var(--ease);
+        transition:transform .2s var(--ease), border-color .2s var(--ease);
       }
-      .cookieBtn:hover{ transform: translateY(-1px); border-color: rgba(43,108,255,.28); }
-      .cookieBtn.primary{
-        background: rgba(255,255,255,.10);
-        border-color: rgba(255,255,255,.18);
-      }
-
-      [data-i18n]{ display:none; }
+      .cookieBtn:hover{transform:translateY(-1px); border-color:rgba(27,77,255,.20);}
+      .cookieBtn.primary{background:rgba(2,6,23,.03);}
     </style>
   </head>
 
   <body>
-    <div class="bg" aria-hidden="true">
-      <div class="orbs"></div>
-      <div class="grid"></div>
-    </div>
+    <div class="bg" aria-hidden="true"></div>
 
     <div class="wrap">
       <header>
@@ -469,19 +399,17 @@ const portfolio = [
               <img src="/rapdm-logo.png" alt="RAPDM" />
             </a>
 
-            <nav class="navLinks" aria-label="Navigation">
-              <a href="#focus">Focus</a>
-              <a href="#portfolio">Portfolio</a>
-              <a href="#news">News</a>
-              <a href="#careers">Careers</a>
-              <a href="#contact">Contact</a>
+            <nav aria-label="Navigation">
+              <a href="#focus" data-t="nav_focus">Focus</a>
+              <a href="#portfolio" data-t="nav_portfolio">Portfolio</a>
+              <a href="#news" data-t="nav_news">News</a>
+              <a href="#careers" data-t="nav_careers">Careers</a>
             </nav>
 
             <div class="right">
-              <a class="btn primary" href={MEETING_MAIL}>Meeting</a>
               <div class="lang" role="tablist" aria-label="Language">
-                <button type="button" data-lang="pt" aria-pressed="true">PT</button>
-                <button type="button" data-lang="en" aria-pressed="false">EN</button>
+                <button type="button" data-lang="en" aria-pressed="true">EN</button>
+                <button type="button" data-lang="pt" aria-pressed="false">PT</button>
               </div>
             </div>
           </div>
@@ -491,286 +419,176 @@ const portfolio = [
       <main id="top">
         <div class="container">
 
-          <section class="hero" data-i18n="pt">
-            <div class="heroTop">
-              <div class="kicker"><span class="dot"></span><span>Holding Company + Venture Studio</span></div>
-              <h1>Capital disciplinado.<br/>Execução consistente.</h1>
-              <p class="sub">
-                A RAPDM estrutura, constrói e investe em negócios com qualidade de execução,
-                governança clara e orientação de longo prazo.
-              </p>
+          <!-- HERO: no H1 -->
+          <section class="hero">
+            <div class="kicker">
+              <span class="dot"></span>
+              <span data-t="kicker">Holding Company + Venture Studio</span>
+            </div>
 
-              <div class="heroActions">
-                <a class="btn primary" href="#contact">Contact</a>
-                <a class="btn" href="/news">Ver News</a>
-              </div>
+            <p class="sub" data-t="hero_sub">
+              RAPDM operates as a holding company and venture studio, building and investing in ventures with clear governance, disciplined capital allocation and pragmatic operations.
+            </p>
 
-              <div class="metricRow">
-                <div class="metric">
-                  <div class="k">Tese</div>
-                  <div class="v">Owner mindset. Sistemas. Decisão por métricas.</div>
-                </div>
-                <div class="metric">
-                  <div class="k">Foco</div>
-                  <div class="v">Consumer, e-commerce infrastructure, SaaS com dados.</div>
-                </div>
-                <div class="metric">
-                  <div class="k">Contato</div>
-                  <div class="v" class="mono">joao@rapdm.co</div>
-                </div>
-              </div>
+            <div class="heroActions">
+              <a class="btn primary" href="#portfolio" data-t="hero_cta_primary">View portfolio</a>
+              <a class="btn" href="/news" data-t="hero_cta_secondary">Read news</a>
+              <a class="btn" href="#contact" data-t="hero_cta_contact">Contact</a>
             </div>
           </section>
 
-          <section class="hero" data-i18n="en">
-            <div class="heroTop">
-              <div class="kicker"><span class="dot"></span><span>Holding Company + Venture Studio</span></div>
-              <h1>Disciplined capital.<br/>Consistent execution.</h1>
-              <p class="sub">
-                RAPDM structures, builds and invests in businesses with execution quality,
-                clear governance and long-term orientation.
-              </p>
-
-              <div class="heroActions">
-                <a class="btn primary" href="#contact">Contact</a>
-                <a class="btn" href="/news">View News</a>
-              </div>
-
-              <div class="metricRow">
-                <div class="metric">
-                  <div class="k">Thesis</div>
-                  <div class="v">Owner mindset. Systems. Metrics-driven decisions.</div>
-                </div>
-                <div class="metric">
-                  <div class="k">Focus</div>
-                  <div class="v">Consumer, e-commerce infrastructure, data-driven SaaS.</div>
-                </div>
-                <div class="metric">
-                  <div class="k">Contact</div>
-                  <div class="v" class="mono">joao@rapdm.co</div>
-                </div>
-              </div>
+          <section id="focus">
+            <div class="sectionHead">
+              <h2 data-t="focus_h">Focus</h2>
+              <p data-t="focus_p">What we do</p>
             </div>
-          </section>
 
-          <section id="focus" data-i18n="pt">
-            <div class="sectionTitle">
-              <h2>Focus</h2>
-              <p>O que fazemos</p>
-            </div>
             <div class="grid3">
               <div class="card">
-                <h3>Holding</h3>
-                <p>Estrutura, governação, alocação de capital e construção de valor no longo prazo.</p>
+                <h3 data-t="focus_1_t">Holding</h3>
+                <p data-t="focus_1_d">Governance, capital allocation, reporting and long-term value creation.</p>
               </div>
               <div class="card">
-                <h3>Venture Studio</h3>
-                <p>Validação, produto e operações com execução pragmática e foco em resultados.</p>
+                <h3 data-t="focus_2_t">Venture Studio</h3>
+                <p data-t="focus_2_d">Validation, product and operations with an execution-first mindset.</p>
               </div>
               <div class="card">
-                <h3>Investimento</h3>
-                <p>Quando a combinação de founder, economics e distribuição é claramente superior.</p>
+                <h3 data-t="focus_3_t">Investment</h3>
+                <p data-t="focus_3_d">Selective deployments where fundamentals and distribution are strong.</p>
               </div>
             </div>
           </section>
 
-          <section id="focus-en" data-i18n="en">
-            <div class="sectionTitle">
-              <h2>Focus</h2>
-              <p>What we do</p>
+          <section id="portfolio">
+            <div class="sectionHead">
+              <h2 data-t="port_h">Portfolio</h2>
+              <p data-t="port_p">Holdings and ventures</p>
             </div>
+
             <div class="grid3">
-              <div class="card">
-                <h3>Holding</h3>
-                <p>Structure, governance, capital allocation and long-term value creation.</p>
+              <div class="card portfolioCard">
+                <a href="https://www.linkedin.com/company/79813925/" target="_blank" rel="noreferrer">
+                  <div>
+                    <h3>AUDAX</h3>
+                    <p data-t="audax_d">E-commerce brands.</p>
+                    <div class="pill" data-t="open">Open</div>
+                  </div>
+                  <div class="arrow" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M7 17L17 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                      <path d="M10 7h7v7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                </a>
               </div>
-              <div class="card">
-                <h3>Venture Studio</h3>
-                <p>Validation, product and operations with pragmatic, outcomes-first execution.</p>
+
+              <div class="card portfolioCard">
+                <a href="https://scalerpath.com" target="_blank" rel="noreferrer">
+                  <div>
+                    <h3>ScalerPath</h3>
+                    <p data-t="scaler_d">SaaS and analytics.</p>
+                    <div class="pill" data-t="open">Open</div>
+                  </div>
+                  <div class="arrow" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M7 17L17 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                      <path d="M10 7h7v7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                </a>
               </div>
-              <div class="card">
-                <h3>Investment</h3>
-                <p>When founder, economics and distribution signals are clearly superior.</p>
+
+              <div class="card portfolioCard">
+                <a href="https://chift.io" target="_blank" rel="noreferrer">
+                  <div>
+                    <h3>Chift</h3>
+                    <p data-t="chift_d">Product and execution.</p>
+                    <div class="pill" data-t="open">Open</div>
+                  </div>
+                  <div class="arrow" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M7 17L17 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                      <path d="M10 7h7v7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                </a>
               </div>
             </div>
           </section>
 
-          <section id="portfolio" data-i18n="pt">
-            <div class="sectionTitle">
-              <h2>Portfolio</h2>
-              <p>Holdings e ventures</p>
+          <section id="news">
+            <div class="sectionHead">
+              <h2 data-t="news_h">News</h2>
+              <p data-t="news_p">Updates and publications</p>
             </div>
-            <div class="grid3">
-              {portfolio.map((p) => (
-                <div class="card portfolioCard">
-                  <a href={p.href} target="_blank" rel="noreferrer">
-                    <div class="name">
-                      <h3 style="margin:0;">{p.name}</h3>
-                      <p style="margin:0; color: rgba(255,255,255,.66); font-size:13px; line-height:1.55;">{p.description_pt}</p>
-                      <span class="pill">Abrir</span>
-                    </div>
-                    <div class="arrow" aria-hidden="true">
-                      <svg viewBox="0 0 24 24" fill="none">
-                        <path d="M7 17L17 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                        <path d="M10 7h7v7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
-                    </div>
-                  </a>
-                </div>
-              ))}
-            </div>
-          </section>
 
-          <section id="portfolio-en" data-i18n="en">
-            <div class="sectionTitle">
-              <h2>Portfolio</h2>
-              <p>Holdings and ventures</p>
-            </div>
-            <div class="grid3">
-              {portfolio.map((p) => (
-                <div class="card portfolioCard">
-                  <a href={p.href} target="_blank" rel="noreferrer">
-                    <div class="name">
-                      <h3 style="margin:0;">{p.name}</h3>
-                      <p style="margin:0; color: rgba(255,255,255,.66); font-size:13px; line-height:1.55;">{p.description_en}</p>
-                      <span class="pill">Open</span>
-                    </div>
-                    <div class="arrow" aria-hidden="true">
-                      <svg viewBox="0 0 24 24" fill="none">
-                        <path d="M7 17L17 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                        <path d="M10 7h7v7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
-                    </div>
-                  </a>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          <section id="news" data-i18n="pt">
-            <div class="sectionTitle">
-              <h2>News</h2>
-              <p>Publicações</p>
-            </div>
-            <div class="surface" style="padding: 18px;">
+            <div class="surface" style="padding:18px;">
               <div class="grid2">
-                <div class="card" style="background: rgba(255,255,255,.04);">
-                  <h3>News como blog</h3>
-                  <p>
-                    A secção News vive em Markdown. Para adicionar um post novo, basta criar um ficheiro em
-                    <span class="mono">src/content/news/</span>.
-                  </p>
+                <div class="card" style="background: rgba(255,255,255,.88);">
+                  <h3 data-t="news_1_t">Blog-style posts</h3>
+                  <p data-t="news_1_d">News is published as Markdown. Add a file and deploy.</p>
                 </div>
-                <div class="card" style="background: rgba(255,255,255,.04);">
-                  <h3>Ver todos</h3>
-                  <p>Lista completa e páginas individuais em <span class="mono">/news</span>.</p>
-                  <div style="margin-top: 12px;">
-                    <a class="btn" href="/news">Abrir /news</a>
+                <div class="card" style="background: rgba(255,255,255,.88);">
+                  <h3 data-t="news_2_t">View all</h3>
+                  <p data-t="news_2_d">Full list and individual pages at /news.</p>
+                  <div style="margin-top:12px;">
+                    <a class="btn" href="/news" data-t="news_btn">Open /news</a>
                   </div>
                 </div>
               </div>
             </div>
           </section>
 
-          <section id="news-en" data-i18n="en">
-            <div class="sectionTitle">
-              <h2>News</h2>
-              <p>Posts</p>
+          <section id="careers">
+            <div class="sectionHead">
+              <h2 data-t="car_h">Careers</h2>
+              <p data-t="car_p">Open roles</p>
             </div>
-            <div class="surface" style="padding: 18px;">
-              <div class="grid2">
-                <div class="card" style="background: rgba(255,255,255,.04);">
-                  <h3>Blog-style news</h3>
-                  <p>
-                    News lives in Markdown. Add a new post by creating a file in
-                    <span class="mono">src/content/news/</span>.
-                  </p>
-                </div>
-                <div class="card" style="background: rgba(255,255,255,.04);">
-                  <h3>View all</h3>
-                  <p>Full list and individual pages at <span class="mono">/news</span>.</p>
-                  <div style="margin-top: 12px;">
-                    <a class="btn" href="/news">Open /news</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
 
-          <section id="careers" data-i18n="pt">
-            <div class="sectionTitle">
-              <h2>Careers</h2>
-              <p>Posições</p>
-            </div>
             <div class="grid2">
               <div class="card">
-                <h3>Ops / Systems Associate</h3>
-                <p>Automação, reporting, processos, tooling. Forte atenção ao detalhe.</p>
+                <h3 data-t="role_1_t">Ops / Systems Associate</h3>
+                <p data-t="role_1_d">Automation, reporting, process design and internal tooling.</p>
               </div>
               <div class="card">
-                <h3>Analyst (Investments)</h3>
-                <p>Screening, research, memos, diligence e acompanhamento.</p>
+                <h3 data-t="role_2_t">Analyst (Investments)</h3>
+                <p data-t="role_2_d">Screening, research, memos, diligence and follow-up.</p>
               </div>
               <div class="card">
-                <h3>Growth (Consumer)</h3>
-                <p>Performance, tracking, criativos, testes e alocação eficiente.</p>
+                <h3 data-t="role_3_t">Growth (Consumer)</h3>
+                <p data-t="role_3_d">Performance testing, measurement and efficient allocation.</p>
               </div>
               <div class="card">
-                <h3>Product / Data</h3>
-                <p>Produto, dados e decisões. Integrações, métricas e clareza.</p>
+                <h3 data-t="role_4_t">Product / Data</h3>
+                <p data-t="role_4_d">Product execution, data instrumentation and decision support.</p>
               </div>
             </div>
           </section>
 
-          <section id="careers-en" data-i18n="en">
-            <div class="sectionTitle">
-              <h2>Careers</h2>
-              <p>Open roles</p>
-            </div>
-            <div class="grid2">
-              <div class="card">
-                <h3>Ops / Systems Associate</h3>
-                <p>Automation, reporting, processes, internal tooling. High attention to detail.</p>
-              </div>
-              <div class="card">
-                <h3>Analyst (Investments)</h3>
-                <p>Screening, research, memos, diligence and follow-up.</p>
-              </div>
-              <div class="card">
-                <h3>Growth (Consumer)</h3>
-                <p>Performance, tracking, creative testing and allocation.</p>
-              </div>
-              <div class="card">
-                <h3>Product / Data</h3>
-                <p>Product, data and decisions. Integrations, metrics and clarity.</p>
-              </div>
-            </div>
-          </section>
-
-          <section id="contact" data-i18n="pt">
-            <div class="sectionTitle">
-              <h2>Contact</h2>
-              <p>Um único formulário</p>
+          <section id="contact">
+            <div class="sectionHead">
+              <h2 data-t="ct_h">Contact</h2>
+              <p data-t="ct_p">One form for all requests</p>
             </div>
 
-            <div class="surface" style="padding: 18px;">
+            <div class="surface" style="padding:18px;">
               <form id="contactForm">
                 <div class="row2">
                   <div>
-                    <label for="name">Nome</label>
-                    <input id="name" name="name" type="text" required placeholder="Nome completo" />
+                    <label for="name" data-t="f_name">Name</label>
+                    <input id="name" name="name" type="text" required placeholder="Full name" />
                   </div>
                   <div>
-                    <label for="email">Email</label>
-                    <input id="email" name="email" type="email" required placeholder="nome@empresa.com" />
+                    <label for="email" data-t="f_email">Email</label>
+                    <input id="email" name="email" type="email" required placeholder="name@company.com" />
                   </div>
                 </div>
 
                 <div class="row2">
                   <div>
-                    <label for="category">Tipo</label>
+                    <label for="category" data-t="f_type">Category</label>
                     <select id="category" name="category" required>
-                      <option value="" selected disabled>Selecionar</option>
+                      <option value="" selected disabled data-t="f_select">Select</option>
                       <option value="Investment">Investment</option>
                       <option value="Partnership">Partnership</option>
                       <option value="Careers">Careers</option>
@@ -779,29 +597,29 @@ const portfolio = [
                     </select>
                   </div>
                   <div>
-                    <label for="link">Link (opcional)</label>
-                    <input id="link" name="link" type="url" placeholder="Deck, LinkedIn, site, etc." />
+                    <label for="link" data-t="f_link">Link (optional)</label>
+                    <input id="link" name="link" type="url" placeholder="Deck, LinkedIn, website, etc." />
                   </div>
                 </div>
 
                 <div class="row2">
                   <div>
-                    <label for="company">Empresa (opcional)</label>
-                    <input id="company" name="company" type="text" placeholder="Empresa / projeto" />
+                    <label for="company" data-t="f_company">Company (optional)</label>
+                    <input id="company" name="company" type="text" placeholder="Company / project" />
                   </div>
                   <div>
-                    <label for="role">Posição (se Careers)</label>
-                    <input id="role" name="role" type="text" placeholder="Ex: Ops / Systems Associate" />
+                    <label for="role" data-t="f_role">Role (if Careers)</label>
+                    <input id="role" name="role" type="text" placeholder="e.g., Ops / Systems Associate" />
                   </div>
                 </div>
 
                 <div>
-                  <label for="message">Mensagem</label>
-                  <textarea id="message" name="message" required placeholder="Curto, factual e claro."></textarea>
+                  <label for="message" data-t="f_msg">Message</label>
+                  <textarea id="message" name="message" required placeholder="Short, factual and clear."></textarea>
                 </div>
 
                 <div class="formRow">
-                  <button class="btn primary" type="submit">Enviar</button>
+                  <button class="btn primary" type="submit" data-t="f_send">Send</button>
                   <span id="formStatus" class="status" aria-live="polite"></span>
                 </div>
               </form>
@@ -815,85 +633,17 @@ const portfolio = [
             </div>
           </section>
 
-          <section id="contact-en" data-i18n="en">
-            <div class="sectionTitle">
-              <h2>Contact</h2>
-              <p>Single form</p>
-            </div>
-
-            <div class="surface" style="padding: 18px;">
-              <form id="contactFormEn">
-                <div class="row2">
-                  <div>
-                    <label for="name_en">Name</label>
-                    <input id="name_en" name="name" type="text" required placeholder="Full name" />
-                  </div>
-                  <div>
-                    <label for="email_en">Email</label>
-                    <input id="email_en" name="email" type="email" required placeholder="name@company.com" />
-                  </div>
-                </div>
-
-                <div class="row2">
-                  <div>
-                    <label for="category_en">Category</label>
-                    <select id="category_en" name="category" required>
-                      <option value="" selected disabled>Select</option>
-                      <option value="Investment">Investment</option>
-                      <option value="Partnership">Partnership</option>
-                      <option value="Careers">Careers</option>
-                      <option value="Press">Press</option>
-                      <option value="General">General</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label for="link_en">Link (optional)</label>
-                    <input id="link_en" name="link" type="url" placeholder="Deck, LinkedIn, website, etc." />
-                  </div>
-                </div>
-
-                <div class="row2">
-                  <div>
-                    <label for="company_en">Company (optional)</label>
-                    <input id="company_en" name="company" type="text" placeholder="Company / project" />
-                  </div>
-                  <div>
-                    <label for="role_en">Role (if Careers)</label>
-                    <input id="role_en" name="role" type="text" placeholder="e.g., Ops / Systems Associate" />
-                  </div>
-                </div>
-
-                <div>
-                  <label for="message_en">Message</label>
-                  <textarea id="message_en" name="message" required placeholder="Short, factual and clear."></textarea>
-                </div>
-
-                <div class="formRow">
-                  <button class="btn primary" type="submit">Send</button>
-                  <span id="formStatusEn" class="status" aria-live="polite"></span>
-                </div>
-              </form>
-
-              <footer>
-                <div class="footRow">
-                  <span>© <span class="mono" id="year2"></span> RAPDM. All rights reserved.</span>
-                  <span class="mono">joao@rapdm.co</span>
-                </div>
-              </footer>
-            </div>
-          </section>
-
         </div>
       </main>
 
       <div class="cookie" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Cookies">
         <div class="cookieInner">
           <div class="cookieText" id="cookieText">
-            Usamos cookies para melhorar a experiência e medir desempenho. Pode aceitar ou recusar cookies não essenciais.
+            We use cookies to improve experience and measure performance. You can accept or reject non-essential cookies.
           </div>
           <div class="cookieActions">
-            <button class="cookieBtn" id="cookieReject">Recusar</button>
-            <button class="cookieBtn primary" id="cookieAccept">Aceitar</button>
+            <button class="cookieBtn" id="cookieReject">Reject</button>
+            <button class="cookieBtn primary" id="cookieAccept">Accept</button>
           </div>
         </div>
       </div>
@@ -902,112 +652,185 @@ const portfolio = [
     <script is:inline>
       const FORM_ENDPOINT = "{FORM_ENDPOINT}";
 
+      const copy = {
+        en: {
+          nav_focus:"Focus", nav_portfolio:"Portfolio", nav_news:"News", nav_careers:"Careers",
+          kicker:"Holding Company + Venture Studio",
+          hero_sub:"RAPDM operates as a holding company and venture studio, building and investing in ventures with clear governance, disciplined capital allocation and pragmatic operations.",
+          hero_cta_primary:"View portfolio",
+          hero_cta_secondary:"Read news",
+          hero_cta_contact:"Contact",
+
+          focus_h:"Focus", focus_p:"What we do",
+          focus_1_t:"Holding", focus_1_d:"Governance, capital allocation, reporting and long-term value creation.",
+          focus_2_t:"Venture Studio", focus_2_d:"Validation, product and operations with an execution-first mindset.",
+          focus_3_t:"Investment", focus_3_d:"Selective deployments where fundamentals and distribution are strong.",
+
+          port_h:"Portfolio", port_p:"Holdings and ventures",
+          audax_d:"E-commerce brands.",
+          scaler_d:"SaaS and analytics.",
+          chift_d:"Product and execution.",
+          open:"Open",
+
+          news_h:"News", news_p:"Updates and publications",
+          news_1_t:"Blog-style posts", news_1_d:"News is published as Markdown. Add a file and deploy.",
+          news_2_t:"View all", news_2_d:"Full list and individual pages at /news.",
+          news_btn:"Open /news",
+
+          car_h:"Careers", car_p:"Open roles",
+          role_1_t:"Ops / Systems Associate", role_1_d:"Automation, reporting, process design and internal tooling.",
+          role_2_t:"Analyst (Investments)", role_2_d:"Screening, research, memos, diligence and follow-up.",
+          role_3_t:"Growth (Consumer)", role_3_d:"Performance testing, measurement and efficient allocation.",
+          role_4_t:"Product / Data", role_4_d:"Product execution, data instrumentation and decision support.",
+
+          ct_h:"Contact", ct_p:"One form for all requests",
+          f_name:"Name", f_email:"Email", f_type:"Category", f_select:"Select",
+          f_link:"Link (optional)", f_company:"Company (optional)", f_role:"Role (if Careers)",
+          f_msg:"Message", f_send:"Send",
+
+          cookieText:"We use cookies to improve experience and measure performance. You can accept or reject non-essential cookies.",
+          cookieReject:"Reject", cookieAccept:"Accept",
+
+          sending:"Sending...", sent:"Sent.", failed:"Failed. Try again.", formNotConfigured:"Form endpoint not configured."
+        },
+
+        pt: {
+          nav_focus:"Focus", nav_portfolio:"Portfolio", nav_news:"News", nav_careers:"Careers",
+          kicker:"Holding Company + Venture Studio",
+          hero_sub:"A RAPDM atua como holding e venture studio, construindo e investindo em ventures com governação clara, alocação disciplinada de capital e operações pragmáticas.",
+          hero_cta_primary:"Ver portfolio",
+          hero_cta_secondary:"Ler news",
+          hero_cta_contact:"Contacto",
+
+          focus_h:"Focus", focus_p:"O que fazemos",
+          focus_1_t:"Holding", focus_1_d:"Governação, alocação de capital, reporting e criação de valor no longo prazo.",
+          focus_2_t:"Venture Studio", focus_2_d:"Validação, produto e operações com mentalidade de execução.",
+          focus_3_t:"Investimento", focus_3_d:"Deploy seletivo quando os fundamentos e a distribuição são fortes.",
+
+          port_h:"Portfolio", port_p:"Holdings e ventures",
+          audax_d:"E-commerce brands.",
+          scaler_d:"SaaS e analytics.",
+          chift_d:"Produto e execução.",
+          open:"Abrir",
+
+          news_h:"News", news_p:"Atualizações e publicações",
+          news_1_t:"Posts tipo blog", news_1_d:"News é publicado em Markdown. Adicionas um ficheiro e faz deploy.",
+          news_2_t:"Ver tudo", news_2_d:"Lista completa e páginas individuais em /news.",
+          news_btn:"Abrir /news",
+
+          car_h:"Careers", car_p:"Posições",
+          role_1_t:"Ops / Systems Associate", role_1_d:"Automação, reporting, desenho de processos e tooling interno.",
+          role_2_t:"Analyst (Investments)", role_2_d:"Screening, research, memos, diligence e acompanhamento.",
+          role_3_t:"Growth (Consumer)", role_3_d:"Testes, medição e alocação eficiente.",
+          role_4_t:"Product / Data", role_4_d:"Execução de produto, instrumentação de dados e suporte à decisão.",
+
+          ct_h:"Contacto", ct_p:"Um formulário para todos os pedidos",
+          f_name:"Nome", f_email:"Email", f_type:"Tipo", f_select:"Selecionar",
+          f_link:"Link (opcional)", f_company:"Empresa (opcional)", f_role:"Posição (se Careers)",
+          f_msg:"Mensagem", f_send:"Enviar",
+
+          cookieText:"Usamos cookies para melhorar a experiência e medir desempenho. Pode aceitar ou recusar cookies não essenciais.",
+          cookieReject:"Recusar", cookieAccept:"Aceitar",
+
+          sending:"A enviar...", sent:"Enviado.", failed:"Falhou. Tenta novamente.", formNotConfigured:"Form endpoint não configurado."
+        }
+      };
+
       const langButtons = document.querySelectorAll("[data-lang]");
-      const blocks = Array.from(document.querySelectorAll("[data-i18n]"));
+      const nodes = Array.from(document.querySelectorAll("[data-t]"));
 
-      const cacheDisplay = () => {
-        blocks.forEach((el) => {
-          if (!el.dataset.display) {
-            const d = getComputedStyle(el).display;
-            el.dataset.display = (d && d !== "none") ? d : "block";
-          }
-        });
-      };
-
-      const setLang = (lang) => {
-        try { localStorage.setItem("rapdm_lang", lang); } catch {}
-        langButtons.forEach((b) => b.setAttribute("aria-pressed", b.dataset.lang === lang ? "true" : "false"));
-        blocks.forEach((el) => {
-          el.style.display = (el.dataset.i18n === lang) ? (el.dataset.display || "block") : "none";
-        });
+      const applyLang = (lang) => {
+        const dict = copy[lang] || copy.en;
         document.documentElement.lang = (lang === "pt") ? "pt-PT" : "en";
+        try { localStorage.setItem("rapdm_lang", lang); } catch {}
+
+        langButtons.forEach((b) => b.setAttribute("aria-pressed", (b.dataset.lang === lang) ? "true" : "false"));
+
+        nodes.forEach((el) => {
+          const key = el.getAttribute("data-t");
+          if (key && dict[key] != null) el.textContent = dict[key];
+        });
+
         const cookieText = document.getElementById("cookieText");
-        if (cookieText) {
-          cookieText.textContent = (lang === "pt")
-            ? "Usamos cookies para melhorar a experiência e medir desempenho. Pode aceitar ou recusar cookies não essenciais."
-            : "We use cookies to improve experience and measure performance. You can accept or reject non-essential cookies.";
-        }
-        const r = document.getElementById("cookieReject");
-        const a = document.getElementById("cookieAccept");
-        if (r && a) {
-          r.textContent = (lang === "pt") ? "Recusar" : "Reject";
-          a.textContent = (lang === "pt") ? "Aceitar" : "Accept";
-        }
+        const cookieReject = document.getElementById("cookieReject");
+        const cookieAccept = document.getElementById("cookieAccept");
+        if (cookieText) cookieText.textContent = dict.cookieText;
+        if (cookieReject) cookieReject.textContent = dict.cookieReject;
+        if (cookieAccept) cookieAccept.textContent = dict.cookieAccept;
       };
 
-      cacheDisplay();
-      const saved = (() => { try { return localStorage.getItem("rapdm_lang"); } catch { return null; } })() || "pt";
-      setLang(saved);
-      langButtons.forEach((b) => b.addEventListener("click", () => setLang(b.dataset.lang)));
+      const saved = (() => { try { return localStorage.getItem("rapdm_lang"); } catch { return null; } })();
+      applyLang(saved || "en");
+
+      langButtons.forEach((b) => b.addEventListener("click", () => applyLang(b.dataset.lang)));
+
+      const form = document.getElementById("contactForm");
+      const status = document.getElementById("formStatus");
+
+      const getLang = () => {
+        const pressed = Array.from(langButtons).find(b => b.getAttribute("aria-pressed") === "true");
+        return pressed?.dataset.lang || "en";
+      };
 
       const postForm = async (payload) => {
         const res = await fetch(FORM_ENDPOINT, {
-          method: "POST",
-          headers: { "Accept": "application/json", "Content-Type": "application/json" },
+          method:"POST",
+          headers:{ "Accept":"application/json", "Content-Type":"application/json" },
           body: JSON.stringify(payload)
         });
         if (!res.ok) throw new Error("Request failed");
-        return true;
       };
 
-      const hookForm = (formId, statusId, ids) => {
-        const form = document.getElementById(formId);
-        const status = document.getElementById(statusId);
-        if (!form || !status) return;
-
+      if (form && status) {
         form.addEventListener("submit", async (e) => {
           e.preventDefault();
 
+          const lang = getLang();
+          const dict = copy[lang] || copy.en;
+
           if (!FORM_ENDPOINT || FORM_ENDPOINT.includes("REPLACE_ME")) {
             status.className = "status err";
-            status.textContent = "Form endpoint not configured.";
+            status.textContent = dict.formNotConfigured;
             return;
           }
 
           status.className = "status";
-          status.textContent = "Sending...";
+          status.textContent = dict.sending;
 
-          const get = (id) => (document.getElementById(id)?.value || "");
           const payload = {
-            source: "rapdm.co",
+            source:"rapdm.co",
             page: window.location.href,
-            name: get(ids[0]),
-            email: get(ids[1]),
-            category: get(ids[2]),
-            link: get(ids[3]),
-            company: get(ids[4]),
-            role: get(ids[5]),
-            message: get(ids[6])
+            name: document.getElementById("name")?.value || "",
+            email: document.getElementById("email")?.value || "",
+            category: document.getElementById("category")?.value || "",
+            link: document.getElementById("link")?.value || "",
+            company: document.getElementById("company")?.value || "",
+            role: document.getElementById("role")?.value || "",
+            message: document.getElementById("message")?.value || "",
+            lang
           };
 
           try {
             await postForm(payload);
             status.className = "status ok";
-            status.textContent = "Sent.";
+            status.textContent = dict.sent;
             form.reset();
           } catch {
             status.className = "status err";
-            status.textContent = "Failed. Try again.";
+            status.textContent = dict.failed;
           }
         });
-      };
+      }
 
-      hookForm("contactForm", "formStatus", ["name","email","category","link","company","role","message"]);
-      hookForm("contactFormEn", "formStatusEn", ["name_en","email_en","category_en","link_en","company_en","role_en","message_en"]);
-
-      const y = String(new Date().getFullYear());
-      const y1 = document.getElementById("year");
-      const y2 = document.getElementById("year2");
-      if (y1) y1.textContent = y;
-      if (y2) y2.textContent = y;
+      const yEl = document.getElementById("year");
+      if (yEl) yEl.textContent = String(new Date().getFullYear());
 
       const banner = document.getElementById("cookieBanner");
       const accept = document.getElementById("cookieAccept");
       const reject = document.getElementById("cookieReject");
-
       const key = "rapdm_cookie_consent";
-      const existing = (() => { try { return localStorage.getItem(key); } catch { return null; } })();
 
+      const existing = (() => { try { return localStorage.getItem(key); } catch { return null; } })();
       if (!existing && banner) banner.style.display = "block";
 
       const setConsent = (v) => {
