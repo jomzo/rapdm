@@ -380,6 +380,81 @@
       color: var(--ink);
     }
 
+    /* Focus Showcase */
+    .focus-showcase {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .focus-item {
+      display: flex;
+      gap: 32px;
+      align-items: flex-start;
+      padding: 40px 0;
+      border-bottom: 1px solid var(--line);
+      transition: all .4s var(--ease);
+    }
+
+    .focus-item:last-child {
+      border-bottom: none;
+    }
+
+    .focus-item:hover {
+      padding-left: 16px;
+    }
+
+    .focus-item:hover .focus-number {
+      color: var(--accent);
+      transform: scale(1.1);
+    }
+
+    .focus-number {
+      font-size: 48px;
+      font-weight: 700;
+      color: rgba(0,102,204,.15);
+      line-height: 1;
+      font-family: var(--mono);
+      min-width: 80px;
+      transition: all .4s var(--ease);
+    }
+
+    .focus-content h3 {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--ink);
+    }
+
+    .focus-content p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.6;
+      max-width: 500px;
+    }
+
+    @media (max-width: 768px) {
+      .focus-item {
+        gap: 20px;
+        padding: 32px 0;
+      }
+
+      .focus-number {
+        font-size: 36px;
+        min-width: 60px;
+      }
+
+      .focus-content h3 {
+        font-size: 20px;
+      }
+
+      .focus-item:hover {
+        padding-left: 8px;
+      }
+    }
+
     /* Grid */
     .grid { 
       display: grid; 
@@ -665,7 +740,7 @@
             <span data-t="kicker">Holding Company + Venture Studio</span>
           </div>
 
-          <h1 data-t="hero_title">Building ventures with real purpose</h1>
+          <h1 data-t="hero_title">Building ventures with precision and purpose</h1>
 
           <p class="sub" data-t="hero_sub">
             RAPDM is a Portugal-based holding company founded in 2019 by João Medeiros, focused on building and scaling high-potential ventures in Retail and Technology. The group partners with ambitious founders to create enduring businesses and expand a selective, high-quality partnership ecosystem.
@@ -683,18 +758,29 @@
             <p data-t="focus_p">What we do</p>
           </div>
 
-          <div class="grid grid-3">
-            <div class="card">
-              <h3 data-t="focus_1_t">Holding</h3>
-              <p data-t="focus_1_d">Governance, capital allocation, reporting and long-term value creation.</p>
+          <div class="focus-showcase">
+            <div class="focus-item">
+              <div class="focus-number">01</div>
+              <div class="focus-content">
+                <h3 data-t="focus_1_t">Holding</h3>
+                <p data-t="focus_1_d">Governance, capital allocation, reporting and long-term value creation.</p>
+              </div>
             </div>
-            <div class="card">
-              <h3 data-t="focus_2_t">Venture Studio</h3>
-              <p data-t="focus_2_d">Validation, product and operations with an execution-first mindset.</p>
+            
+            <div class="focus-item">
+              <div class="focus-number">02</div>
+              <div class="focus-content">
+                <h3 data-t="focus_2_t">Venture Studio</h3>
+                <p data-t="focus_2_d">Validation, product and operations with an execution-first mindset.</p>
+              </div>
             </div>
-            <div class="card">
-              <h3 data-t="focus_3_t">Investment</h3>
-              <p data-t="focus_3_d">Selective deployments where fundamentals and distribution are strong.</p>
+            
+            <div class="focus-item">
+              <div class="focus-number">03</div>
+              <div class="focus-content">
+                <h3 data-t="focus_3_t">Investment</h3>
+                <p data-t="focus_3_d">Selective deployments where fundamentals and distribution are strong.</p>
+              </div>
             </div>
           </div>
         </section>
@@ -805,7 +891,7 @@
         <section id="contact">
           <div class="section-head">
             <h2 data-t="ct_h">Contact</h2>
-            <p data-t="ct_p">Contcat Form</p>
+            <p data-t="ct_p">One form for all requests</p>
           </div>
 
           <div class="surface">
